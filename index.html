@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CIS Program Director Guide</title>
+<meta name="description" content="How-to guide for Program Directors reviewing their courses in Bossier Parish Community College's Course Inventory Sweep.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+
+:root {
+  /* Layout: one source for two renderings. Print is the Letter-size PDF; screen is one reading column under a maroon cover band. */
+  --maroon: #8D042D; --gold: #FEBA12; --dark: #56000C; --orange: #F7941D;
+  --ink: #1F1A1B; --mute: #5E5558; --line: #E2D9DB; --cream: #FFFBF0; --paper: #FFFFFF; --wash: #F7F2F3;
+  --accent: #8D042D; --accent-2: #56000C; --num: #FEBA12; --key-bg: #FBF0F3; --key-line: #E7C3CD; --focus: #F7941D; --role-bg: #FFF5DA;
+  --ok-bg: #EAF4EC; --ok-line: #A9CFB2; --ok-bar: #3F7D4E; --ok-ink: #2E6B3D;
+  --font-display: "Bebas Neue", Impact, "Arial Narrow", Arial, sans-serif;
+  --font-body: "Montserrat", Arial, Helvetica, sans-serif;
+}
+/* Dark theme applies on screen only, so the PDF always prints in the light palette. */
+@media screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #F2E8EA; --mute: #C4B4B8; --line: #3D252C; --cream: #2B2311; --paper: #170B0F; --wash: #24141A;
+    --accent: #F5B3C3; --accent-2: #FAD9E1; --key-bg: #2B1119; --key-line: #5E2535; --role-bg: #2A2010; --ok-bg: #12241A; --ok-line: #2E5239; --ok-bar: #6FBF80; --ok-ink: #9ED9AB; color-scheme: dark;
+  }
+}
+@media screen {
+  :root[data-theme="dark"] {
+    --ink: #F2E8EA; --mute: #C4B4B8; --line: #3D252C; --cream: #2B2311; --paper: #170B0F; --wash: #24141A;
+    --accent: #F5B3C3; --accent-2: #FAD9E1; --key-bg: #2B1119; --key-line: #5E2535; --role-bg: #2A2010; --ok-bg: #12241A; --ok-line: #2E5239; --ok-bar: #6FBF80; --ok-ink: #9ED9AB; color-scheme: dark;
+  }
+}
+@page { size: Letter; margin: 0.95in 0.75in 0.85in 0.75in; }
+html, body { margin: 0; padding: 0; }
+body { font-family: "Montserrat", Arial, sans-serif; font-size: 10.2pt; line-height: 1.52; color: var(--ink); background: var(--paper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+p { margin: 0 0 8pt 0; orphans: 3; widows: 3; }
+a { color: var(--accent); text-decoration: none; }
+strong { font-weight: 600; }
+.mono { font-family: "Menlo", "Consolas", "Courier New", monospace; font-size: 0.92em; }
+
+/* ---------- cover ----------
+   Option B, chosen October 25, 2026: a gold field with the maroon logo on it, the title in maroon, and the
+   Bossier City, Natchitoches, and Sabine Valley campuses as three equal circles on the seam where gold meets
+   maroon. Solid fills and opaque images only (the logo is flattened onto gold in assets/logo_on_gold.png),
+   since some PDF viewers draw transparency badly. */
+.cover { width: 8.5in; height: 11in; background: var(--gold); color: var(--dark); position: relative; overflow: hidden; page-break-after: always; }
+.cover .low { position: absolute; left: 0; top: 7.6in; width: 8.5in; height: 3.4in; background: var(--maroon); }
+.cover .logo { position: absolute; left: 0.62in; top: 0.62in; width: 2.75in; display: block; }
+.cover .kicker { position: absolute; left: 0.66in; top: 2.02in; font-size: 9.5pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dark); font-weight: 600; }
+.cover .t1 { position: absolute; left: 0.6in; top: 2.28in; margin: 0; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 54pt; line-height: 1; letter-spacing: 0.04em; color: var(--dark); }
+.cover .t2 { position: absolute; left: 0.52in; top: 2.94in; margin: 0; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 214pt; line-height: 0.86; letter-spacing: 0.005em; color: var(--maroon); }
+.cover .rule { position: absolute; left: 0.66in; top: 5.6in; width: 1.3in; height: 5pt; background: var(--maroon); }
+.cover .t3 { position: absolute; left: 0.66in; top: 5.76in; margin: 0; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 26pt; line-height: 1; letter-spacing: 0.05em; color: var(--dark); }
+.cover .rings { position: absolute; left: 0.62in; right: 0.62in; top: 6.55in; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.3in; justify-items: center; }
+.cover .ring { width: 2.1in; text-align: center; }
+.cover .ring img { width: 2.1in; height: 2.1in; object-fit: cover; display: block; border-radius: 50%; border: 6pt solid var(--dark); box-sizing: border-box; background: var(--dark); }
+.cover .ring span { display: block; margin-top: 9pt; font-family: "Bebas Neue", Arial, sans-serif; font-size: 17pt; letter-spacing: 0.1em; color: var(--gold); line-height: 1; }
+.cover .ring small { display: block; margin-top: 3pt; font-size: 7.5pt; letter-spacing: 0.24em; text-transform: uppercase; color: #F6E3E8; font-weight: 600; }
+.cover .foot { position: absolute; left: 0.66in; right: 0.62in; bottom: 0.4in; display: flex; justify-content: space-between; font-size: 8.5pt; color: #F6E3E8; letter-spacing: 0.14em; text-transform: uppercase; border-top: 1pt solid var(--gold); padding-top: 7pt; }
+
+/* ---------- contents ---------- */
+.toc h1 { margin-top: 0; }
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li { padding: 4pt 0; border-bottom: 1px solid var(--line); font-size: 11pt; }
+.toc li a { display: flex; align-items: baseline; color: inherit; }
+.toc li .n { width: 26pt; font-family: "Bebas Neue", Arial, sans-serif; font-size: 16pt; color: var(--accent); }
+.toc li .t { flex: 1; }
+.toc li .p { font-family: "Bebas Neue", Arial, sans-serif; font-size: 15pt; color: var(--accent); min-width: 20pt; text-align: right; }
+.toc li .s { display: block; font-size: 8.8pt; color: var(--mute); margin-top: 1pt; }
+
+/* ---------- sections ---------- */
+section.sec { page-break-before: always; }
+h1 { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 34pt; line-height: 1; color: var(--accent); margin: 0 0 4pt 0; letter-spacing: 0.01em; }
+section:not(.sec) > h1 { page-break-after: avoid; break-after: avoid; }
+h1 .num { color: var(--num); margin-right: 8pt; }
+.lede { font-size: 11.2pt; color: var(--mute); margin: 0 0 14pt 0; line-height: 1.5; }
+.gold-rule { width: 1.2in; height: 4pt; background: var(--gold); margin: 6pt 0 12pt 0; }
+h2 { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 19pt; line-height: 1.05; color: var(--accent-2); margin: 16pt 0 5pt 0; letter-spacing: 0.02em; page-break-after: avoid; break-after: avoid; }
+h3 { font-size: 10.6pt; font-weight: 700; color: var(--accent); margin: 12pt 0 3pt 0; page-break-after: avoid; break-after: avoid; }
+
+/* figures */
+figure { margin: 8pt 0 12pt 0; page-break-inside: avoid; break-inside: avoid; }
+figure img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4pt; break-inside: avoid; page-break-inside: avoid; }
+figure, .annot { display: block; }
+ol.steps figure { display: inline-block; width: 100%; vertical-align: top; }
+figure.w60 img { width: 58%; }
+figure.w45 img { width: 46%; }
+figure.w75 img { width: 76%; }
+figure.w85 img { width: 86%; }
+figure.w80 img { width: 80%; }
+figcaption { font-size: 8.6pt; color: var(--mute); margin-top: 4pt; line-height: 1.4; }
+figcaption b { color: var(--accent); font-weight: 600; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; align-items: start; }
+.two figure { margin-top: 4pt; }
+/* the submission form, shown in two halves; border-box keeps the right half's border inside the page */
+.two.jf { margin-top: 6pt; }
+.two.jf img { box-sizing: border-box; }
+
+/* annotated figure */
+.annot { position: relative; margin: 6pt 0 10pt 0; page-break-inside: avoid; }
+.annot img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4pt; }
+.annot .b { position: absolute; width: 17pt; height: 17pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 12.5pt; line-height: 17pt; text-align: center; box-shadow: 0 0 0 2pt #fff, 0 2pt 6pt rgba(0,0,0,0.35); transform: translate(-50%, -50%); }
+.keys { display: grid; grid-template-columns: 1fr 1fr; gap: 3pt 14pt; margin: 0 0 8pt 0; font-size: 9.4pt; }
+.keys div { display: flex; gap: 6pt; align-items: flex-start; }
+.keys .k { flex: none; width: 15pt; height: 15pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 11pt; line-height: 15pt; text-align: center; margin-top: 1pt; }
+
+/* callouts */
+.box { border-radius: 4pt; padding: 8pt 11pt; margin: 8pt 0 10pt 0; page-break-inside: avoid; break-inside: avoid; font-size: 9.7pt; line-height: 1.5; }
+.box.tip { background: var(--cream); border: 1px solid var(--gold); box-shadow: inset 3pt 0 0 var(--gold); }
+.box.key { background: var(--key-bg); border: 1px solid var(--key-line); box-shadow: inset 3pt 0 0 var(--maroon); }
+.box.ok { background: var(--ok-bg); border: 1px solid var(--ok-line); box-shadow: inset 3pt 0 0 var(--ok-bar); }
+.box.ok .t { color: var(--ok-ink); display: flex; align-items: center; gap: 4pt; }
+.box.ok .t svg { width: 9pt; height: 9pt; flex: none; }
+.box .t { font-weight: 700; color: var(--accent); font-size: 8.6pt; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2pt; }
+.box p:last-child { margin-bottom: 0; }
+
+/* steps */
+ol.steps { list-style: none; margin: 4pt 0 6pt 0; padding: 0; counter-reset: s; }
+ol.steps > li { position: relative; padding-left: 30pt; margin-bottom: 9pt; counter-increment: s; }
+ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: 1pt; width: 20pt; height: 20pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 14pt; line-height: 20pt; text-align: center; }
+ol.steps > li b.h { display: block; font-weight: 700; color: var(--accent-2); margin-bottom: 1pt; page-break-after: avoid; break-after: avoid; }
+
+/* why cards */
+.why { display: grid; grid-template-columns: 1fr 1fr; gap: 9pt; margin: 6pt 0 4pt 0; }
+.why .card { border: 1px solid var(--line); border-top: 4pt solid var(--maroon); border-radius: 4pt; padding: 7pt 10pt 6pt 10pt; page-break-inside: avoid; break-inside: avoid; }
+.why .card h3 { margin: 0 0 2pt 0; font-size: 10.4pt; }
+.why .card p { font-size: 9.2pt; line-height: 1.42; margin: 0; }
+
+/* plain lists */
+ul { margin: 2pt 0 8pt 0; padding-left: 16pt; }
+li { margin-bottom: 3pt; }
+dl.qa dt { font-weight: 700; color: var(--accent-2); margin-top: 9pt; page-break-after: avoid; }
+dl.qa dd { margin: 2pt 0 0 0; }
+
+/* tables */
+table { width: 100%; border-collapse: collapse; font-size: 9.4pt; margin: 6pt 0 10pt 0; }
+tr { page-break-inside: avoid; break-inside: avoid; }
+th { text-align: left; font-weight: 700; color: var(--accent); border-bottom: 2px solid var(--gold); padding: 5pt 6pt; font-size: 8.8pt; letter-spacing: 0.06em; text-transform: uppercase; }
+td { border-bottom: 1px solid var(--line); padding: 5pt 6pt; vertical-align: top; }
+td.k { font-weight: 600; width: 1.6in; color: var(--accent-2); }
+
+/* contacts */
+.contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 10pt; }
+.contact { background: var(--wash); border-radius: 4pt; padding: 11pt 13pt; page-break-inside: avoid; }
+.contact .n { font-family: "Bebas Neue", Arial, sans-serif; font-size: 18pt; color: var(--accent); line-height: 1; }
+.contact .r { font-size: 9.4pt; color: var(--mute); margin: 2pt 0 6pt 0; }
+.contact .d { font-size: 9.6pt; line-height: 1.5; }
+.chain { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; margin: 8pt 0 10pt 0; }
+.chain div { background: var(--wash); border-radius: 4pt; padding: 8pt 9pt; font-size: 9pt; line-height: 1.45; border-top: 4pt solid var(--gold); page-break-inside: avoid; }
+.chain div b { display: block; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 15pt; color: var(--accent); margin-bottom: 2pt; }
+.chain div.first { border-top-color: var(--maroon); }
+.avoid { page-break-inside: avoid; break-inside: avoid; }
+.uses { border-left: 4pt solid var(--gold); padding-left: 12pt; margin: 4pt 0 10pt 0; }
+.uses h3 { margin-top: 6pt; }
+.uses p { margin-bottom: 6pt; }
+.brk { page-break-before: always; }
+.end { margin-top: 18pt; border-top: 2px solid var(--gold); padding-top: 8pt; font-size: 8.8pt; color: var(--mute); }
+/* the booking call-out under the contact cards: solid fills only, and each button is a real link in the PDF too */
+.book-acts { flex: none; display: flex; flex-direction: column; gap: 6pt; }
+.book-acts a.book-btn { justify-content: flex-start; }
+.book { display: flex; align-items: center; gap: 14pt; margin: 14pt 0 4pt 0; padding: 11pt 14pt 11pt 14pt; background: var(--key-bg); border: 1px solid var(--key-line); border-left: 5pt solid var(--maroon); border-radius: 4pt; page-break-inside: avoid; break-inside: avoid; }
+.book-copy { flex: 1; min-width: 0; }
+.book .t { font-family: "Bebas Neue", Arial, sans-serif; font-size: 18pt; line-height: 1; letter-spacing: 0.02em; color: var(--accent); margin-bottom: 4pt; }
+.book p { margin: 0; font-size: 9.6pt; line-height: 1.5; }
+a.book-btn { flex: none; display: inline-flex; align-items: center; gap: 6pt; background: #8D042D; color: #FFFFFF; font-weight: 700; font-size: 9.6pt; line-height: 1.2; padding: 8pt 12pt; border-radius: 4pt; text-decoration: none; white-space: nowrap; }
+a.book-btn svg { width: 11pt; height: 11pt; flex: none; }
+
+/* ---------- section 7: requisites ----------
+   The three kinds as cards with solid header bands (the quick guide's colors), and the decision path as rows:
+   a question, a Yes arrow to its answer, and a No step down to the next question. Solid fills only. */
+.req3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9pt; margin: 6pt 0 6pt 0; }
+.req { border: 1px solid var(--line); border-radius: 4pt; overflow: hidden; background: var(--paper); display: flex; flex-direction: column; page-break-inside: avoid; break-inside: avoid; }
+.req .hd { padding: 7pt 10pt 6pt 10pt; background: #8D042D; color: #FFFFFF; }
+.req .hd b { display: block; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 20pt; line-height: 1; letter-spacing: 0.02em; }
+.req .hd span { display: block; margin-top: 2pt; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #FEBA12; }
+.req.conc .hd { background: #FEBA12; color: #56000C; }
+.req.conc .hd span { color: #8D042D; }
+.req.co .hd { background: #56000C; }
+.req .bd { flex: 1; display: flex; flex-direction: column; padding: 7pt 9pt 8pt 9pt; font-size: 8.9pt; line-height: 1.42; }
+.req .bd p { margin: 0 0 5pt 0; }
+.req .chips { display: flex; flex-wrap: wrap; gap: 3pt; margin-bottom: 6pt; }
+.chip { display: inline-flex; align-items: center; gap: 2pt; font-size: 7pt; font-weight: 600; line-height: 1.2; padding: 2pt 4.5pt; border-radius: 3pt; border: 1px solid var(--line); color: var(--mute); background: var(--paper); white-space: nowrap; }
+.chip svg { width: 8pt; height: 8pt; flex: none; }
+.chip.yes { background: #FEBA12; border-color: #FEBA12; color: #56000C; }
+.req .in { margin-top: auto; border-top: 1px solid var(--line); padding-top: 4pt; font-size: 8.3pt; line-height: 1.38; }
+.req .in + .in { margin-top: 4pt; }
+.req .in b { display: block; font-size: 7pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.req .in i { color: var(--mute); }
+.flow { margin: 4pt 0 6pt 0; }
+.flow .row, .flow .down { display: grid; grid-template-columns: 1.12fr 46pt 1fr; align-items: stretch; }
+.flow .row { page-break-inside: avoid; break-inside: avoid; }
+.flow .q { display: flex; align-items: center; border: 1.5pt solid var(--accent); border-radius: 5pt; padding: 5.5pt 10pt; font-weight: 600; font-size: 9.6pt; line-height: 1.35; color: var(--accent-2); background: var(--paper); }
+.flow .q.note { border-style: dashed; font-weight: 500; color: var(--ink); }
+.flow .yes { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1pt; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.14em; color: var(--accent); }
+.flow .yes svg { width: 30pt; height: 9pt; }
+.flow .a { border-radius: 5pt; padding: 5.5pt 10pt; display: flex; flex-direction: column; justify-content: center; }
+.flow .a b { display: block; font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 16pt; line-height: 1; letter-spacing: 0.02em; }
+.flow .a small { display: block; margin-top: 2pt; font-size: 8.2pt; line-height: 1.35; }
+.flow .a.pre { background: #8D042D; color: #FFFFFF; }
+.flow .a.pre small, .flow .a.co small { color: #F6E3E8; }
+.flow .a.conc { background: #FEBA12; color: #56000C; }
+.flow .a.co { background: #56000C; color: #FFFFFF; }
+.flow .a.sec { background: var(--paper); border: 1.5pt dashed var(--accent); color: var(--accent-2); }
+.flow .a.sec small { color: var(--ink); }
+.flow .down span { justify-self: center; display: flex; align-items: center; gap: 4pt; padding: 1pt 0; font-size: 7.4pt; font-weight: 700; letter-spacing: 0.14em; color: var(--mute); }
+.flow .down svg { width: 8pt; height: 10pt; }
+table.rules td.k { width: 0.85in; white-space: nowrap; }
+figure.tight { margin-top: 4pt; margin-bottom: 8pt; }
+/* section 6's description sample (November 14, 2026): each sentence beside where it goes. Sentences that stay sit on
+   cream with a gold bar, and sentences that move read in the muted color. Solid fills only. */
+table.where td.k { width: 2.3in; }
+table.dex td.s { width: 66%; }
+table.dex tr.stay td { background: var(--cream); }
+table.dex tr.stay td.s { box-shadow: inset 3pt 0 0 var(--gold); padding-left: 9pt; }
+table.dex tr.move td.s { color: var(--mute); }
+table.dex td.w { font-weight: 600; color: var(--accent-2); }
+table.dex tr.stay td.w { color: var(--accent); }
+/* a screenshot beside its key (section 9's course list, October 29, 2026) */
+.figside { display: grid; grid-template-columns: 27% 1fr; gap: 16pt; align-items: start; margin: 8pt 0 12pt 0; break-inside: avoid; page-break-inside: avoid; }
+.figside figure { margin: 0; }
+.figside dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 7pt 10pt; align-items: baseline; font-size: 9.6pt; line-height: 1.4; }
+.figside dt { margin: 0; }
+.figside dd { margin: 0; }
+.tagk { display: inline-block; font-family: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 7.4pt; font-weight: 700; letter-spacing: .04em; padding: 0 4pt; border-radius: 2.5pt; border: 1px solid #D97A0C; background: #FFF4E5; color: #8A4B00; white-space: nowrap; }
+.tagk.done { border-color: #3F7D4E; background: #E3F1E6; color: #3F7D4E; }
+.tagk.ret { border-color: #B3261E; background: #FDECEC; color: #8E1B1B; }
+table.rules td:nth-child(2) { width: 2in; }
+.annot.w80 { width: 80%; }
+.annot.w92 { width: 92%; margin-left: auto; margin-right: auto; }
+/* Section 10's part for Deans and Assistant Deans sits in its own panel: a dark maroon band over a light gold field. */
+.role { border: 1.2pt solid var(--gold); border-radius: 6pt; background: var(--role-bg); overflow: hidden; page-break-inside: avoid; break-inside: avoid; margin: 0 0 8pt 0; }
+.role-head { background: #56000C; border-bottom: 3pt solid #FEBA12; padding: 10pt 14pt 9pt 14pt; }
+.role-head .kick { color: #FEBA12; font-size: 7.6pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.2; }
+.role-head h2 { color: #FFFFFF; margin: 3pt 0 0 0; }
+.role-body { padding: 11pt 14pt 4pt 14pt; }
+.role-body .annot { margin-left: auto; margin-right: auto; }
+.role-body .keys { width: 80%; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr); }
+.role-body h3 { font-size: 10.2pt; font-weight: 700; color: var(--accent-2); margin: 6pt 0 3pt 0; page-break-after: avoid; break-after: avoid; }
+kbd { font-family: "Montserrat", Arial, sans-serif; font-size: 0.82em; font-weight: 600; color: var(--ink); background: var(--paper); border: 1px solid var(--key-line); border-bottom-width: 2px; border-radius: 3pt; padding: 0 3.5pt; white-space: nowrap; }
+/* section 10: a button for each division's SharePoint list (solid fills; gold over maroon, a preferred pairing) */
+.lists { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7pt; margin: 4pt 0 6pt 0; page-break-inside: avoid; break-inside: avoid; }
+a.list-btn { display: flex; flex-direction: column; justify-content: flex-start; background: #8D042D; color: #FFFFFF; border-radius: 4pt; padding: 6pt 9pt 7pt 9pt; text-decoration: none; }
+a.list-btn b { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 18pt; line-height: 1; letter-spacing: 0.04em; color: #FEBA12; }
+a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #FFFFFF; }
+/* smaller badges where the screenshot is dense */
+.annot.sm .b { width: 14pt; height: 14pt; font-size: 10.5pt; line-height: 14pt; }
+
+/* ---------- print and screen helpers ---------- */
+@media print { .screen-only { display: none !important; } }
+@media screen { .print-only { display: none !important; } }
+
+/* ---------- screen rendering (the published page) ---------- */
+@media screen {
+  body { font-family: var(--font-body); font-size: 16px; line-height: 1.62; }
+  p { margin: 0 0 12px 0; }
+  h1, h2, .toc li .n, .contact .n, .chain div b { font-family: var(--font-display); }
+
+  .cover { width: auto; height: auto; page-break-after: auto; }
+  .cover .low { display: none; }
+  .cover-in { position: relative; max-width: 940px; margin: 0 auto; box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 36px 30px;
+    display: flex; flex-direction: column; align-items: flex-start; }
+  .cover .logo, .cover .kicker, .cover .t1, .cover .t2, .cover .rule, .cover .t3, .cover .rings, .cover .foot { position: relative; left: auto; right: auto; top: auto; bottom: auto; }
+  .cover .logo { width: min(300px, 70vw); height: auto; }
+  .cover .kicker { margin-top: clamp(28px, 6vw, 56px); font-size: 12px; }
+  .cover .t1 { font-size: clamp(36px, 8vw, 66px); margin-top: 6px; }
+  .cover .t2 { font-size: clamp(108px, 29vw, 250px); line-height: 0.84; margin-left: -0.04em; }
+  .cover .rule { width: 110px; height: 6px; margin-top: 18px; }
+  .cover .t3 { font-size: clamp(22px, 4.2vw, 32px); margin-top: 12px; text-wrap: balance; }
+  /* the seam runs through the middle of the three circles: gold above, maroon below (two hard stops, no blend) */
+  .cover-base { --ring: min(210px, 27vw); background: linear-gradient(var(--gold) calc(var(--ring) / 2 + 6px), var(--maroon) calc(var(--ring) / 2 + 6px)); padding: 6px 0 26px; }
+  .cover-base-in { max-width: 940px; margin: 0 auto; box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .cover .rings { width: 100%; gap: 12px; }
+  .cover .ring { width: var(--ring); min-width: 0; }
+  .cover .ring img { width: var(--ring); height: var(--ring); border-width: 5px; max-width: 100%; }
+  .cover .ring span { font-size: clamp(15px, 3.2vw, 22px); margin-top: 12px; }
+  .cover .ring small { font-size: 10px; margin-top: 4px; }
+  .cover .foot { width: 100%; margin-top: 30px; font-size: 11px; box-sizing: border-box; gap: 12px; }
+  .cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 26px; }
+  .cover-actions .updated { font-size: 13px; color: var(--dark); letter-spacing: 0.04em; font-weight: 500; }
+
+
+  .doc { max-width: 880px; margin: 0 auto; box-sizing: border-box;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 72px; }
+  .doc > section + section { margin-top: 76px !important; }
+  section { scroll-margin-top: 16px; }
+  h1 { font-size: clamp(36px, 6vw, 50px); text-wrap: balance; }
+  h2 { font-size: 26px; margin: 32px 0 8px 0; text-wrap: balance; }
+  h3 { font-size: 16px; margin: 20px 0 4px 0; }
+  .lede { font-size: 18px; margin-bottom: 18px; }
+  .gold-rule { width: 96px; height: 5px; margin: 10px 0 20px 0; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+
+  .toc li { font-size: 17px; padding: 0; margin: 0; }
+  .toc li a { padding: 12px 0; }
+  .toc li .n { width: 44px; font-size: 26px; flex: none; }
+  .toc li .t { min-width: 0; }
+  .toc li .s { font-size: 13.5px; margin-top: 2px; }
+  .toc li a:hover .t, .toc li a:focus-visible .t { color: var(--accent); }
+
+  figure { margin: 16px 0 24px 0; }
+  figure img, .annot img { border-radius: 6px; max-width: 100%; height: auto; }
+  figcaption { font-size: 13.5px; margin-top: 8px; }
+  .annot .b { width: 26px; height: 26px; line-height: 26px; font-size: 17px; }
+  .keys { font-size: 14.5px; gap: 10px 24px; }
+  .keys .k { width: 22px; height: 22px; line-height: 22px; font-size: 15px; }
+
+  .box { font-size: 15px; padding: 14px 18px; margin: 16px 0 20px 0; border-radius: 6px; }
+  .box .t { font-size: 12px; margin-bottom: 4px; }
+  .why { gap: 14px; margin-top: 10px; }
+  .why .card { padding: 14px 16px 14px 16px; border-radius: 6px; min-width: 0; }
+  .why .card h3 { font-size: 16px; margin-bottom: 6px; }
+  .why .card p { font-size: 14.5px; line-height: 1.55; }
+  ol.steps > li { padding-left: 46px; margin-bottom: 26px; }
+  ol.steps > li::before { width: 30px; height: 30px; line-height: 30px; font-size: 19px; top: 0; }
+
+  .tbl { overflow-x: auto; }
+  table { font-size: 14.5px; }
+  th { font-size: 12px; padding: 9px 8px; }
+  td { padding: 10px 8px; }
+  td.k { width: 28%; }
+  dl.qa dt { margin-top: 18px; }
+
+  .chain { gap: 12px; }
+  .chain div { font-size: 14px; padding: 12px 14px; border-radius: 6px; min-width: 0; }
+  .chain div b { font-size: 21px; }
+  .contacts { gap: 14px; }
+  .contact { padding: 16px 18px; border-radius: 6px; min-width: 0; }
+  .contact .n { font-size: 25px; }
+  .contact .r { font-size: 14px; }
+  .contact .d { font-size: 14.5px; overflow-wrap: anywhere; }
+  .end { font-size: 13px; }
+  .book { flex-wrap: wrap; gap: 14px 20px; margin: 24px 0 0 0; padding: 18px 20px; border-left-width: 6px; border-radius: 6px; }
+  .book-copy { flex: 1 1 320px; }
+  .book .t { font-family: var(--font-display); font-size: 26px; margin-bottom: 6px; }
+  .book p { font-size: 15px; line-height: 1.6; }
+  a.book-btn { font: 700 15px/1.2 var(--font-body); gap: 10px; padding: 13px 20px; border-radius: 6px; }
+  a.book-btn:hover { background: #56000C; }
+  .book-acts { gap: 10px; }
+  .role { border-width: 2px; border-radius: 10px; margin: 32px 0 8px 0; }
+  .role-head { padding: 16px 22px 14px 22px; border-bottom-width: 4px; }
+  .role-head .kick { font-size: 12px; }
+  .role-head h2 { margin: 6px 0 0 0; }
+  .role-body { padding: 20px 22px 8px 22px; }
+  .role-body h3 { font-size: 17px; margin: 18px 0 6px 0; }
+  kbd { border-radius: 4px; padding: 0 5px; }
+  a.book-btn svg { width: 18px; height: 18px; }
+  .mono { overflow-wrap: anywhere; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+  .req3 { gap: 14px; margin-top: 10px; }
+  .req { border-radius: 6px; min-width: 0; }
+  .req .hd { padding: 12px 16px 10px 16px; }
+  .req .hd b { font-family: var(--font-display); font-size: 30px; }
+  .req .hd span { font-size: 11px; margin-top: 4px; }
+  .req .bd { padding: 14px 16px 16px 16px; font-size: 14.5px; line-height: 1.55; }
+  .req .bd p { margin-bottom: 10px; }
+  .req .chips { gap: 6px; margin-bottom: 12px; }
+  .chip { font-size: 12px; padding: 4px 9px; gap: 5px; border-radius: 4px; }
+  .chip svg { width: 12px; height: 12px; }
+  .req .in { font-size: 13.5px; padding-top: 8px; }
+  .req .in + .in { margin-top: 8px; }
+  .req .in b { font-size: 11px; }
+  .flow { margin: 16px 0 24px 0; }
+  .flow .row, .flow .down { grid-template-columns: 1fr 76px 1fr; }
+  .flow .q { font-size: 15px; padding: 12px 16px; border-width: 2px; border-radius: 8px; }
+  .flow .yes { font-size: 11px; gap: 2px; }
+  .flow .yes svg { width: 46px; height: 12px; }
+  .flow .a { padding: 12px 16px; border-radius: 8px; }
+  .flow .a b { font-family: var(--font-display); font-size: 24px; }
+  .flow .a small { font-size: 13.5px; margin-top: 4px; }
+  .flow .a.sec { border-width: 2px; }
+  .flow .down span { font-size: 11px; padding: 6px 0; gap: 6px; }
+  .flow .down svg { width: 12px; height: 20px; }
+  .lists { gap: 10px; margin: 12px 0 20px 0; }
+  a.list-btn { padding: 12px 14px 13px 14px; border-radius: 6px; }
+  a.list-btn b { font-family: var(--font-display); font-size: 28px; }
+  a.list-btn span { font-size: 12.5px; margin-top: 4px; }
+  a.list-btn:hover { background: #56000C; }
+}
+@media screen { .figside dl { font-size: 14px; } .tagk { font-size: 10.5px; } }
+@media screen and (max-width: 720px) {
+  .figside { grid-template-columns: 1fr; }
+  .figside figure img { max-width: 300px; }
+  .req3 { grid-template-columns: 1fr; }
+  table.rules td:nth-child(2) { width: auto; }
+  table.rules td.k { width: auto; }
+  /* the question takes the full width; Yes sits in a narrow column beside its answer, and No steps down at the left */
+  .flow .row { grid-template-columns: 58px 1fr; row-gap: 8px; }
+  .flow .row .q { grid-column: 1 / -1; }
+  .flow .yes svg { width: 30px; }
+  .flow .down { grid-template-columns: 1fr; }
+  .flow .down span { justify-self: start; padding-left: 12px; }
+  .annot.w80, .annot.w92 { width: 100%; }
+  .role-head, .role-body { padding-left: 16px; padding-right: 16px; }
+  .role-body .keys { width: 100%; grid-template-columns: 1fr; }
+  .why, .keys, .contacts, .two { grid-template-columns: 1fr; }
+  .lists { grid-template-columns: 1fr 1fr; }
+  .chain { grid-template-columns: 1fr 1fr; }
+  figure.w45 img, figure.w60 img, figure.w75 img, figure.w80 img, figure.w85 img { width: 100%; }
+  td.k { width: 34%; }
+  table.where td.k { width: 40%; }
+}
+@media screen and (max-width: 480px) {
+  .chain { grid-template-columns: 1fr; }
+  table { font-size: 13.5px; }
+  th, td { padding-left: 5px; padding-right: 5px; }
+  .annot .b { width: 18px; height: 18px; line-height: 18px; font-size: 12px; box-shadow: 0 0 0 1.5px #FFFFFF; }
+  ol.steps > li { padding-left: 40px; }
+  .cover .rings { gap: 8px; }
+  .cover .ring span { letter-spacing: 0.05em; }
+  .cover .foot { font-size: 10px; letter-spacing: 0.1em; }
+  .toc li .n { width: 36px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="low"></div>
+  <div class="cover-in">
+  <img class="logo" src="assets/logo_on_gold.png" alt="Bossier Parish Community College">
+  <div class="kicker">Office of Academic Affairs</div>
+  <div class="t1">Course Inventory</div>
+  <div class="t2">Sweep</div>
+  <div class="rule"></div>
+  <div class="t3">How-to guide for Program Directors</div>
+  <div class="cover-actions screen-only">
+    <span class="updated">Updated November 14, 2026</span>
+  </div>
+  </div>
+  <div class="cover-base"><div class="cover-base-in">
+  <div class="rings">
+    <div class="ring"><img src="assets/cover_bossier.jpg" style="object-position: 52% 50%" alt="Bossier City campus"><span>Bossier City</span><small>Campus</small></div>
+    <div class="ring"><img src="assets/cover_natchitoches.jpg" style="object-position: 80% 50%" alt="Natchitoches campus"><span>Natchitoches</span><small>Campus</small></div>
+    <div class="ring"><img src="assets/cover_sabine.jpg" style="object-position: 22% 50%" alt="Sabine Valley campus"><span>Sabine Valley</span><small>Campus</small></div>
+  </div>
+  <div class="foot"><span>Academic Year 2026-27</span><span>November 2026</span></div>
+  </div></div>
+</div>
+
+<main class="doc">
+<!-- ============ CONTENTS ============ -->
+<section class="toc">
+  <h1>Contents</h1>
+  <div class="gold-rule"></div>
+  <ol>
+    <li><a href="#what"><span class="n">1</span><span class="t">What the Sweep is, and why now<span class="s">Why it is happening now, and where your answers go</span></span><span class="p" data-toc="what"></span></a></li>
+    <li><a href="#why"><span class="n">2</span><span class="t">Why this matters to you<span class="s">The case for doing this well, written for the person who owns the courses</span></span><span class="p" data-toc="why"></span></a></li>
+    <li><a href="#before"><span class="n">3</span><span class="t">Before you start<span class="s">What to have ready, and the one rule to remember</span></span><span class="p" data-toc="before"></span></a></li>
+    <li><a href="#glance"><span class="n">4</span><span class="t">The Sweep at a glance<span class="s">Where everything is</span></span><span class="p" data-toc="glance"></span></a></li>
+    <li><a href="#steps"><span class="n">5</span><span class="t">Reviewing a course, step by step<span class="s">From picking the course to clicking Submit</span></span><span class="p" data-toc="steps"></span></a></li>
+    <li><a href="#questions"><span class="n">6</span><span class="t">What the questions are asking<span class="s">Each block of the Sweep, and how to answer it</span></span><span class="p" data-toc="questions"></span></a></li>
+    <li><a href="#requisites"><span class="n">7</span><span class="t">Prerequisites and corequisites<span class="s">Which requirement fits, and how to build it in the Sweep</span></span><span class="p" data-toc="requisites"></span></a></li>
+    <li><a href="#blocked"><span class="n">8</span><span class="t">When Confirm as written is unavailable<span class="s">The three reasons, and what to do instead</span></span><span class="p" data-toc="blocked"></span></a></li>
+    <li><a href="#after"><span class="n">9</span><span class="t">After you submit<span class="s">Dean review, the approval chain, and the status marks in the Sweep</span></span><span class="p" data-toc="after"></span></a></li>
+    <li><a href="#list"><span class="n">10</span><span class="t">Your division's list in SharePoint<span class="s">Where each course's files are kept, and who is working on what</span></span><span class="p" data-toc="list"></span></a></li>
+    <li><a href="#returned"><span class="n">11</span><span class="t">Fixing a returned course<span class="s">Start from previous submission</span></span><span class="p" data-toc="returned"></span></a></li>
+    <li><a href="#faq"><span class="n">12</span><span class="t">Common questions<span class="s">The ones we expect to hear most</span></span><span class="p" data-toc="faq"></span></a></li>
+    <li><a href="#contact"><span class="n">13</span><span class="t">Who to contact<span class="s">The people behind the Sweep, and what each one covers</span></span><span class="p" data-toc="contact"></span></a></li>
+  </ol>
+</section>
+
+<!-- ============ 1 WHAT ============ -->
+<section class="sec" id="what">
+  <h1><span class="num">1</span>What the Sweep is, and why now</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">The Course Inventory Sweep is a review of every active academic course at BPCC by the Program Directors who own them. That is 742 courses across the four divisions, drawn from the Banner extract dated October 6, 2026. Each one is confirmed as written, updated, or retired, and each review adds information about the course that the college has never collected in one place.</p>
+
+  <h2>Why now</h2>
+  <p>BPCC is moving its curriculum and catalog to Watermark Curriculum Strategy. The new catalog will be built from the course records BPCC holds today, and Watermark's discovery and build work begins in January 2027. A course reviewed before then moves into Watermark from an accurate record. A course nobody reviews moves in exactly as it reads today, and correcting it later turns into cleanup during the build rather than a decision the program makes now. The Sweep is the first step in that move, and Program Directors will have more to review and decide in Watermark as it is built and launched.</p>
+
+  <div class="box key avoid">
+    <div class="t">What is Watermark?</div>
+    <p>Watermark is not new to BPCC. The college has long used it for end-of-term course evaluations, and last year it adopted Watermark Planning &amp; Self-Study, which is rolling out now for collecting course learning outcomes and preparing accreditation reports. Curriculum Strategy is a different part of Watermark, and the one the Sweep prepares for. It is where course and program proposals will move through review and approval, and where BPCC's catalog will be built and published, beginning with a soft launch in Summer 2027.</p>
+  </div>
+
+  <h2>What your answers are used for</h2>
+  <p>Every review does two jobs at once.</p>
+  <div class="uses">
+    <h3>Bringing today's records up to date</h3>
+    <p>Once your Dean approves a review, the Registrar's Office enters the changes in Banner and Rachael Carter enters them in Degree Works. Academic Affairs then updates the public catalog, and an updated edition of the current 2026-27 catalog in mid-January will carry many of the changes submitted during the Sweep.</p>
+    <h3>Collecting what a modern catalog needs</h3>
+    <p>Much of what students and advisors want to know about a course has never been gathered in one place, from where it is taught and which terms it runs to its restrictions, costs beyond tuition, Industry-Based Certifications, Louisiana Common Course Number, and the general education competencies it builds, including where AI is present. The Sweep collects it for a catalog that is open about what each course involves. Most of it will first appear in the Watermark catalog.</p>
+  </div>
+
+  <h2>Timeline</h2>
+  <div class="tbl"><table>
+    <tr><td class="k">Now</td><td>The Sweep is under way. Program Directors review the courses in their programs in the Sweep.</td></tr>
+    <tr><td class="k">December 10, 2026</td><td>All course reviews due by 4:30 p.m. Central. A division's Dean may set an earlier date.</td></tr>
+    <tr><td class="k">January 2027</td><td>In mid-January, Academic Affairs publishes an updated edition of the current 2026-27 catalog with changes submitted during the Sweep, while most of the new information waits for the Watermark catalog. Watermark discovery and build also begin.</td></tr>
+    <tr><td class="k">Summer 2027</td><td>Soft launch of the Watermark catalog and Watermark Curriculum Strategy.</td></tr>
+    <tr><td class="k">Fall 2027</td><td>Watermark Curriculum Strategy and the Watermark catalog fully implemented.</td></tr>
+  </table></div>
+  <div class="box tip avoid">
+    <div class="t">Your division's deadline</div>
+    <p>Reviews are due Thursday, December 10 at 4:30 p.m. Central, and your Dean may set an earlier date. Working a few courses at a time, in your program's order, is the easiest way to get there.</p>
+  </div>
+
+  <h2>The three things that can happen to a course</h2>
+  <div class="tbl"><table>
+    <tr><th>Choice</th><th>When to pick it</th><th>What it needs from you</th></tr>
+    <tr><td class="k">Confirm as written<br><span style="font-weight:400;color:var(--mute)">Accurate as it stands</span></td><td>The Banner record is right: title, hours, prerequisites, corequisites, grade modes, schedule types, instructional methods, CIP, and description.</td><td>The information questions: classification, competencies, locations, restrictions, fees, and IBCs. A confirmation is a full review, not a shortcut.</td></tr>
+    <tr><td class="k">Update<br><span style="font-weight:400;color:var(--mute)">Something needs to change</span></td><td>Anything in the record is wrong or out of date, or the description holds more than what the course covers (section 6).</td><td>Only the fields that change (blank means no change), the effective term, and the information questions.</td></tr>
+    <tr><td class="k">Retire<br><span style="font-weight:400;color:var(--mute)">Should not carry forward</span></td><td>The course should not be in the new catalog.</td><td>Last term offered, the reason, any replacement, whether an active program still requires it, students in progress, and a teach-out note.</td></tr>
+  </table></div>
+</section>
+
+<!-- ============ 2 WHY ============ -->
+<section class="sec" id="why">
+  <h1><span class="num">2</span>Why this matters to you</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">No one at BPCC knows your program the way you do. You know which courses run every fall, which ones depend on a lab alongside them, where each one is taught, and which certifications students carry out the door. The Sweep is how that knowledge reaches the record students and advisors read every day. Each report carries your name, because these are your courses.</p>
+  <p>Keeping it accurate is part of owning a program, and it pays back in places you already deal with every week.</p>
+
+  <div class="why">
+    <div class="card">
+      <h3>Students read your courses before they read anything else</h3>
+      <p>The catalog entry is often a prospective student's first look at your program. A description that still carries a statewide numbering sentence, a prerequisite that reads like Banner code, or a missing online or regional campus listing costs you students you never hear from.</p>
+    </div>
+    <div class="card">
+      <h3>Advisors build plans from what the record says</h3>
+      <p>Prerequisites, corequisites, and term availability drive every degree plan an advisor writes. A wrong or incomplete record means a registration error, a petition, or a lost semester for one of your students. Accurate rotation detail lets advisors sequence your courses correctly.</p>
+    </div>
+    <div class="card">
+      <h3>Accreditation reads the same record</h3>
+      <p>SACSCOC and your program-level accreditors look at credit hours, CIP codes, and the general education competencies a course develops. The Sweep records those competencies measure by measure, which is the evidence base for the next reaffirmation and for program-level review cycles.</p>
+    </div>
+    <div class="card">
+      <h3>Certifications, transfer, and reporting depend on it</h3>
+      <p>Industry-Based Certifications (IBCs), the PLA matrix, and Louisiana Common Course Numbers feed state reporting and transfer. The Sweep asks about each, including how an IBC exam fits the course, and records where AI is present so BPCC can report and advertise it accurately.</p>
+    </div>
+    <div class="card">
+      <h3>Your program, as it opens in Watermark</h3>
+      <p>Your courses move into Watermark from the record the Sweep leaves. A course you review starts there the way you would explain it to a student. One nobody reviews starts there exactly as it reads today.</p>
+    </div>
+    <div class="card">
+      <h3>A one-time ask with a lasting payoff</h3>
+      <p>This course-by-course review is meant to happen once, but it starts your work in Watermark rather than finishing it. You will still review your courses and programs there, beginning from the record you build now.</p>
+    </div>
+  </div>
+
+  <div class="box key avoid">
+    <div class="t">The short version</div>
+    <p>Each course takes a few minutes. Confirming a course that is right is as valuable as fixing one that is wrong, because a confirmation tells the college the record can be trusted. Every answer you give is one fewer question Academic Affairs, the Registrar, or an advisor has to guess at later.</p>
+  </div>
+</section>
+
+<!-- ============ 3 BEFORE ============ -->
+<section id="before" style="margin-top:26pt">
+  <h1><span class="num">3</span>Before you start</h1>
+  <div class="gold-rule"></div>
+
+  <h2>Have these ready</h2>
+  <ul>
+    <li><strong>The link.</strong> The Sweep lives at <a class="mono" href="https://sweep.joebrownlee.com" target="_blank" rel="noopener">sweep.joebrownlee.com</a>. It opens in any current browser, with nothing to sign in to. A laptop or desktop is easiest, since each course ends with two files to attach to the submission form and to your division's list in SharePoint.</li>
+    <li><strong>Your program's course list.</strong> The Sweep lists courses by division, not by program, so keep your own list beside it. Some programs have courses all their own, such as HACR, ENGR, CULA, or FRSC. Others share a common set of courses that feed many programs, such as AMFG, CTEC, or BLGY. When a course is shared across programs, the Dean of the division where it lives assigns its review. For general education courses, that Dean may ask a group of faculty to contribute, and one person still submits the review with their own BPCC email.</li>
+    <li><strong>Your BPCC email address.</strong> Each report asks for it. If your Dean returns a course, the note comes to that address.</li>
+    <li><strong>A place to keep what you save.</strong> Every course produces a PDF report and a submission file. Both go to your division's list in SharePoint, attached to that course's row (section 10). The list is the division's shared record, so nothing is lost and everyone has a clear line of sight into what has been completed. Because the Sweep keeps nothing, those files are the record of what you have submitted.</li>
+  </ul>
+
+  <div class="box key avoid">
+    <div class="t">The one rule</div>
+    <p><strong>The Sweep saves nothing.</strong> It keeps no record of your work between visits, on purpose, so that the only record of a course is the PDF and the submission file you save and submit. Finish each course by saving its files and submitting them before you close the tab or refresh. If you stop partway through a course, that course starts over next time.</p>
+  </div>
+
+  <h2>If a report won't save</h2>
+  <p>The Sweep saves each report as an ordinary download, so there is nothing to set up first. If a report or its submission file ever will not save, open <strong>How this works</strong> from the header and click <strong>Run the download check</strong> under <em>Trouble saving a report?</em> It saves two small test files the same way the Sweep saves each report: a one-page PDF that reads <em>Test passed</em> and a matching file ending in <span class="mono">.json</span>, both named <span class="mono">CourseSweep_Test_Passed_DELETE</span>. If both reach your downloads folder and the PDF opens, the computer can save the Sweep's files, so try the report again. Delete both test files, since they are not a submission and never go on the form.</p>
+  <p>If the check says a file was not saved, or the files never reach your downloads folder, that computer's settings are stopping downloads. Use another computer for the Sweep, and if it is a BPCC classroom or lab computer, let Joe Brownlee know which room.</p>
+  <figure class="w85"><img src="shots/36_check_passed.png" alt="The download check after a run, with both test files saved"><figcaption>The download check in How this works, after a run. The Sweep sees each file reach the browser, so finding both in your downloads folder is the final proof.</figcaption></figure>
+
+  <h2>What happens on your screen</h2>
+  <p>When you click the save button, the Sweep saves the PDF and the submission file straight to your browser's downloads folder, named by the course and a time stamp. Depending on the browser, they may show in a download bar or ask where to save, and either is fine. The save button then turns into <strong>Open the submission form</strong>, which opens a short form in a new tab with the course already filled in. You attach the two files and click Submit. The confirmation page names your Dean, who reviews the report first, and has a button to your division's list in SharePoint.</p>
+  <div class="box key avoid">
+    <div class="t">Your division's list is home for your files</div>
+    <p>The downloads folder is only a stop on the way. Once you submit, attach both files to the course's row in your division's list in SharePoint (section 10). That list is where your Dean and colleagues can see them, and it is the first place to check whenever you need a course's files again, including when a course comes back for changes. With both files attached there, you can delete them from your computer.</p>
+  </div>
+  <p>The Sweep itself stays open in its own tab, so once the form is submitted and the files are in your division's list, you can go straight to the next course.</p>
+
+</section>
+
+<!-- ============ 4 GLANCE ============ -->
+<section class="sec" id="glance">
+  <h1><span class="num">4</span>The Sweep at a glance</h1>
+  <div class="gold-rule"></div>
+  <div class="annot w92">
+    <img src="shots/01_page_open.png" alt="The Sweep with its parts numbered">
+    <span class="b" style="left:2.2%; top:1.4%">1</span>
+    <span class="b" style="left:41.0%; top:6.6%">2</span>
+    <span class="b" style="left:79.0%; top:15.8%">3</span>
+    <span class="b" style="left:97.4%; top:25.6%">4</span>
+    <span class="b" style="left:97.4%; top:31.9%">5</span>
+    <span class="b" style="left:23.1%; top:46.5%">6</span>
+    <span class="b" style="left:97.4%; top:50.4%">7</span>
+    <span class="b" style="left:97.4%; top:93.7%">8</span>
+  </div>
+  <div class="keys">
+    <div><span class="k">1</span><span><strong>The reminder strip.</strong> Nothing in the Sweep is saved. It stays at the top so you cannot miss it.</span></div>
+    <div><span class="k">2</span><span><strong>Header buttons.</strong> Theme, Start from previous submission, How this works, and the workbook map (for Academic Affairs; you can ignore it).</span></div>
+    <div><span class="k">3</span><span><strong>The deadline countdown.</strong> Days, hours, and minutes left until Thursday, December 10 at 4:30 p.m. Central. Your Dean may set an earlier date for your division.</span></div>
+    <div><span class="k">4</span><span><strong>Submission status.</strong> Updated from the submission form every 15 minutes, with the legend for the tags and marks (section 9).</span></div>
+    <div><span class="k">5</span><span><strong>Division tiles.</strong> Pick your division. Each tile counts courses complete, in process, returned, and not yet submitted.</span></div>
+    <div><span class="k">6</span><span><strong>The course list.</strong> Search by course or title, filter by status, and click a course to open it.</span></div>
+    <div><span class="k">7</span><span><strong>The Banner record.</strong> What Banner holds for the course today, with any flags the Sweep found. A submitted course also shows where its report is, with its submission ID.</span></div>
+    <div><span class="k">8</span><span><strong>What should happen to this course.</strong> Confirm as written, Update, or Retire. The questions follow below it, and the save button sits at the very bottom.</span></div>
+  </div>
+
+  <h2>The header buttons</h2>
+  <figure><img src="shots/02_header.png" alt="The Sweep's header"></figure>
+  <div class="tbl"><table>
+    <tr><td class="k">Theme</td><td>Changes how the Sweep looks: Classic, High contrast (projectors and bright rooms), Game day, Night, and Color-safe (blue and charcoal in place of green and rose, for color vision). The PDF reports look the same in every theme. The choice lasts for the visit.</td></tr>
+    <tr><td class="k">Start from previous submission</td><td>Loads a submission file you saved earlier, bringing back every answer for that course. Section 11 covers it.</td></tr>
+    <tr><td class="k">How this works</td><td>Opens a six-step summary at the top of the Sweep, with a button for each division's list in SharePoint and the download check.</td></tr>
+    <tr><td class="k">Show workbook map</td><td>Shows which column of the original review workbook each question maps to. It is there for Academic Affairs and the Registrar.</td></tr>
+  </table></div>
+  <figure class="w85"><img src="shots/03_how_this_works.png" alt="The How this works panel"><figcaption>The <b>How this works</b> panel, opened from the header. It restates the six steps, with a button for each division's list in SharePoint, and ends with the download check for a computer that won't save (section 3). The build number at the bottom right names the version of the Sweep you have open, which helps if you ever report a problem.</figcaption></figure>
+</section>
+
+<!-- ============ 5 STEPS ============ -->
+<section class="sec" id="steps">
+  <h1><span class="num">5</span>Reviewing a course, step by step</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">Seven steps, start to finish. The first course takes longest. By the third, the rhythm is familiar.</p>
+
+  <ol class="steps">
+    <li><b class="h">Pick your division, then the course.</b>Click your division's tile, then search the list by course number or title and click the course. The list keeps your place as you move through it, and Previous and Next at the very bottom step through the division in order.
+      <figure class="w45" style="margin-top:6pt"><img src="shots/06_sidebar.png" alt="The course list"><figcaption>The course list for a division, with search and the status filter.</figcaption></figure>
+    </li>
+    <li><b class="h">Read the Banner record.</b>The top card shows what Banner holds today: hours, department, CIP, fees, prerequisites, corequisites, grade modes, schedule types, instructional methods, and the description. Below it, the Sweep flags anything it found, such as a description that names the Louisiana CCN, a title that is probably truncated at 30 characters, or a schedule type the Registrar has retired. Read the flags, and the description itself (section 6), before you decide.
+      <figure class="w60" style="margin-top:6pt"><img src="shots/07_record.png" alt="The Banner record for a course"><figcaption>The Banner record. <b>Flagged for you</b> notes appear under the description when the Sweep has something to point out.</figcaption></figure>
+    </li>
+    <li><b class="h">Decide what should happen to it.</b>Choose Confirm as written, Update, or Retire. Then answer whether a report for this course has already been submitted. For the first pass through your courses the answer is <em>No, this is the first submission</em>. The other answer is for a replacement, which section 11 explains. If the course already has a report on record, the Sweep answers <em>Yes</em> for you and fills in that report's submission ID.
+      <figure class="w75" style="margin-top:6pt"><img src="shots/10_confirm_chosen.png" alt="The disposition block with Confirm as written chosen"><figcaption>Confirm as written chosen. The submission question appears for every disposition.</figcaption></figure>
+    </li>
+    <li><b class="h">Answer the questions that follow.</b>The blocks below the disposition ask what the catalog has never carried. Section 6 walks through each one. As you work, the box at the bottom of the Sweep lists anything that still has to be answered before the report can be saved. Orange warnings are advice and never stop a save; the red list does.
+      <figure class="w75" style="margin-top:6pt"><img src="shots/11_foot_needed.png" alt="The list of items still needed"><figcaption>The bottom of the Sweep just after choosing a disposition. The red list shrinks as you answer, and the save button appears when it is empty.</figcaption></figure>
+    </li>
+    <li><b class="h">Sign and save.</b>Enter your name, your BPCC email, and the date, and add any notes to Academic Affairs. Your name and email carry to the next course for the rest of the visit. When nothing is left on the red list, the save button appears. Click it, and both files save to your downloads folder.
+      <figure class="w60" style="margin-top:6pt"><img src="shots/40_ready.png" alt="Ready to save"><figcaption>Ready to save. The box names the two files that will be saved and who signed.</figcaption></figure>
+    </li>
+    <li><b class="h">Open the submission form and attach both files.</b>Once both files are saved, the save button's spot becomes <strong>Open the submission form</strong>. It opens a new tab with the course, title, division, disposition, effective term, your name, the date, the PDF file name, and your email already filled in. Attach the PDF to the PDF Report question and the submission file (the one ending in <span class="mono">_submission.json</span>) to the .json File question, then click Submit. The confirmation page reads <em>Report received</em>, names your Dean, who reviews it first, and has a button to your division's list in SharePoint.
+      <div class="two jf avoid">
+        <figure><img src="assets/jotform_form_top.png" alt="The top of the submission form, with the course details filled in"><figcaption><b>The submission form as it opens.</b> Every detail is filled in from the Sweep.</figcaption></figure>
+        <figure><img src="assets/jotform_form_bottom.png" alt="The bottom of the submission form, with the two file uploads and the Submit button"><figcaption><b>Further down the form.</b> Attach the PDF to PDF Report and the submission file to .json File, then click Submit.</figcaption></figure>
+      </div>
+      <figure class="w75"><img src="shots/42_saved.png" alt="Files saved, with the Open the submission form button and the button to the division's list"><figcaption>Back in the Sweep, <b>Open the submission form</b> sits where the save button was, with a button to your division's list just under it for step 7. The panel below lists each file and offers Save again. If a file did not save, it shows Not saved with a Try again button, and the form note says it needs both files.</figcaption></figure>
+    </li>
+    <li><b class="h">Record it, and move to the next course.</b>Click the button that opens your division's list (<strong>Open the BIT list</strong>, for example), either under the form button in the Sweep or on the confirmation page. Open the course, attach both files, and fill in what you submitted (section 10 shows how). Then click Next in the Sweep or pick the next course from its list. Your name and email are already in place.</li>
+  </ol>
+
+  <div class="box tip avoid">
+    <div class="t">If you change something after saving</div>
+    <p>The Sweep notices. A note says the files no longer match your answers and the save button comes back. Save again, and if the earlier files were already submitted, choose <strong>Mark it as replacing</strong> the earlier ID so Academic Affairs knows which report to keep. If you never submitted the earlier files, leave it as a first submission and discard them.</p>
+  </div>
+</section>
+
+<!-- ============ 6 QUESTIONS ============ -->
+<section class="sec" id="questions">
+  <h1><span class="num">6</span>What the questions are asking</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">Each block of the Sweep, in the order it appears. Not every block shows for every course: Update detail appears only for updates, Retirement only for retirements, and the Laboratory withdrawal block only for lab courses.</p>
+
+  <h2>Submission</h2>
+  <p>Has a report for this course already been submitted? Answer <em>No, this is the first submission</em> the first time through. When Academic Affairs already has a report for the course, the Sweep answers <em>Yes, this replaces an earlier submission</em> for you as soon as you choose a disposition, and fills in the newest report's submission ID, so a resubmission always names the right report. If you answer No anyway, a note shows the ID with a one-click <em>Mark it as replacing</em> (section 11 shows it).</p>
+  <p>For a course the Sweep shows no report for yet, choose Yes when you are resubmitting and paste the earlier submission ID (the PDF's file name works, with or without <span class="mono">.pdf</span>). If you do not have it, check <em>I don't have the earlier ID</em> and Academic Affairs will match it by course.</p>
+
+  <h2>Update detail (updates only)</h2>
+  <p>Fill in only what changes. A blank field means no change, not an oversight. The block has a row for each part of the record: title (the Banner title of 30 characters or fewer, plus a full display title of up to 100), hours, grade mode, schedule types, instructional methods, prerequisites, corequisites, an equivalent course, and the catalog description. Each row shows the current value, and most offer <strong>Start from current</strong> so you can edit what is there rather than retype it.</p>
+  <div class="box tip">
+    <div class="t">Give the course its whole name</div>
+    <p>The Banner title prints on transcripts and holds only 30 characters, so many are cut off or abbreviated. The full display title holds up to 100, enough for the course's whole name in the catalog. On any update, fill it in when the Banner title doesn't read as the course's real name.</p>
+    <div class="tbl"><table>
+      <tr><th>Banner title</th><th>Full display title</th></tr>
+      <tr><td>Local Adult Detention Faciliti</td><td>Local Adult Detention Facilities</td></tr>
+      <tr><td>Intro Human Anat &amp; Physiology</td><td>Introduction to Human Anatomy and Physiology</td></tr>
+    </table></div>
+    <p>When the Banner title is at 30 characters or abbreviated, the Sweep flags it and prompts under Full display title. For a course with a Louisiana CCN, it also offers the statewide title with one click, a good place to start.</p>
+  </div>
+  <figure><img src="shots/28_update_title.png" alt="The title row of Update detail"><figcaption>The title row, with the current value, a 30-character counter, and Start from current.</figcaption></figure>
+  <figure class="w75"><img src="shots/29_update_prereq.png" alt="The prerequisite builder"><figcaption>Prerequisites are built as groups with any-of or all-of logic. Start from current loads what Banner has, and a Reads as line shows the result in plain words. Section 7 walks through the builder, concurrent enrollment, and the Corequisites row.</figcaption></figure>
+  <p>Two rows carry a red note when they change: credit hours and CIP code. Either one has accreditation implications, and the note asks you to work with Dr. Megan Bange before submitting. The note never blocks the save.</p>
+
+  <h2 id="description">The catalog description</h2>
+  <p>The description is what a student reads in the catalog to decide whether a course is right for them. It describes the course itself, so it reads the same for every section in every term, wherever and however the course is taught. Everything else the catalog says about a course, from prerequisites to fees, the Sweep collects in its own questions, and the new catalog will show each one in its own place.</p>
+
+  <h3>What a description is</h3>
+  <ul>
+    <li><b>The subject and major topics</b> of the course, and the skills students build in it.</li>
+    <li><b>The kind of work students do</b>, such as lab, studio, field, or clinical work, described in words.</li>
+    <li><b>Plain sentences for a student</b> who is deciding whether to take the course.</li>
+    <li><b>Short</b>, usually two to four sentences and under 100 words. The Sweep cautions at 100.</li>
+  </ul>
+  <div class="box tip">
+    <div class="t">Two descriptions that do the job</div>
+    <p><b>CTEC 295, Software Development Process.</b> This course provides a comprehensive overview of the core elements of the software development process, including common software development methodologies, source control, refactoring, and testing. This course also includes programming projects where the students work in teams.</p>
+    <p><b>LPNU 126, Nutrition for Practical Nurses.</b> This course introduces the fundamental principles of nutrition and analysis of the relationship between nutrition intake and health maintenance and wellness for all age groups. Standard nutritional practices and their modification for therapeutic purposes are studied. Includes the role of the essential nutrients of proteins, carbohydrates, fats, vitamins, minerals, and water.</p>
+  </div>
+
+  <h3>What a description is not</h3>
+  <p>A sentence that states a rule, a requirement, a number, or a schedule almost always belongs somewhere else. Each of these has its own question in the Sweep.</p>
+  <div class="tbl"><table class="where">
+    <tr><th>If the description says</th><th>Where it goes in the Sweep</th></tr>
+    <tr><td class="k">The Louisiana CCN</td><td>Louisiana CCN, under Classification. Start from current takes it out for you (section 8).</td></tr>
+    <tr><td class="k">Prerequisites, corequisites, or concurrent enrollment</td><td>The Prerequisite and Corequisite rows in Update detail. If Banner already holds the same requirement, leave them blank (section 7).</td></tr>
+    <tr><td class="k">Cross-listing, or &ldquo;only one will be accepted for credit&rdquo;</td><td>Equivalent course, in Update detail.</td></tr>
+    <tr><td class="k">Credit, lecture, lab, clinical, or other hours</td><td>Hours, in Update detail. Describing a lab or clinical part of the course in words is fine, and the numbers go in Hours.</td></tr>
+    <tr><td class="k">Fall semester only, every other year, or another term note</td><td>Term availability, under Classification, with rotation detail when it applies.</td></tr>
+    <tr><td class="k">Program admission, a background check, a drug screen, or another requirement to enroll</td><td>Enrollment restrictions, with the wording the catalog should show.</td></tr>
+    <tr><td class="k">Instructor, department, or Dean approval</td><td>Special approvals, under Enrollment restrictions.</td></tr>
+    <tr><td class="k">A campus, or online or hybrid delivery</td><td>Location, along with Schedule types and Instructional methods in Update detail.</td></tr>
+    <tr><td class="k">Pass/fail or satisfactory/unsatisfactory grading</td><td>Grade mode, in Update detail.</td></tr>
+    <tr><td class="k">Fees or other costs to students</td><td>Course fees.</td></tr>
+    <tr><td class="k">A certification or licensing exam the course prepares students for</td><td>Industry-Based Certifications.</td></tr>
+    <tr><td class="k">The lab withdrawal sentence</td><td>Laboratory withdrawal policy, on lab courses.</td></tr>
+    <tr><td class="k">CLEP or other credit by exam</td><td>The PLA matrix, which the Office of Academic Affairs keeps. If the matrix needs a change, say so in Notes to Academic Affairs.</td></tr>
+    <tr><td class="k">Learning outcomes, textbooks, grading, or attendance</td><td>The syllabus, since these can change from section to section or term to term.</td></tr>
+  </table></div>
+
+  <h3>A description before and after</h3>
+  <p>A sample, not a real BPCC course, carrying the kinds of sentences Banner descriptions hold today. Two sentences describe the course. The rest move to their own questions.</p>
+  <div class="box key">
+    <div class="t">Before</div>
+    <p>Prerequisite: MATH 102 or MATH 129 with a grade of C or higher. Introduces the science of the natural environment and how people change it, including ecosystems, water and soil quality, air pollution, energy resources, and land use. Laboratory work includes field sampling and water testing. Three lecture hours and two lab hours per week. ENVS 210 and ESCI 210 are cross-listed courses; only one will be accepted for credit. Offered in the fall semester only. Prepares students for a national water quality certification exam.</p>
+  </div>
+  <div class="tbl"><table class="dex">
+    <tr><th>Sentence in the description</th><th>Where it goes</th></tr>
+    <tr class="move"><td class="s">Prerequisite: MATH 102 or MATH 129 with a grade of C or higher.</td><td class="w">Prerequisites</td></tr>
+    <tr class="stay"><td class="s">Introduces the science of the natural environment and how people change it, including ecosystems, water and soil quality, air pollution, energy resources, and land use.</td><td class="w">Stays. It says what the course covers.</td></tr>
+    <tr class="stay"><td class="s">Laboratory work includes field sampling and water testing.</td><td class="w">Stays. It says what kind of work students do.</td></tr>
+    <tr class="move"><td class="s">Three lecture hours and two lab hours per week.</td><td class="w">Hours</td></tr>
+    <tr class="move"><td class="s">ENVS 210 and ESCI 210 are cross-listed courses; only one will be accepted for credit.</td><td class="w">Equivalent course</td></tr>
+    <tr class="move"><td class="s">Offered in the fall semester only.</td><td class="w">Term availability</td></tr>
+    <tr class="move"><td class="s">Prepares students for a national water quality certification exam.</td><td class="w">Industry-Based Certifications</td></tr>
+  </table></div>
+  <div class="box ok">
+    <div class="t"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.4 4.8 9.2 10 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>After</div>
+    <p>Introduces the science of the natural environment and how people change it, including ecosystems, water and soil quality, air pollution, energy resources, and land use. Laboratory work includes field sampling and water testing.</p>
+  </div>
+
+  <div class="box tip">
+    <div class="t">If your course's description carries any of these</div>
+    <p>Treat it the way the Sweep treats the Louisiana CCN. Choose Update, even when nothing else about the course changes, click <strong>Start from current</strong> under Catalog description, and delete each sentence that belongs somewhere else. Then make sure what each one said is captured in its own question. A prerequisite Banner already holds needs no change, while a cross-listing goes in Equivalent course. The report shows the old description beside the new one.</p>
+    <p>The Sweep flags each of these sentences under Flagged for you and again under Catalog description, naming the question it belongs in. It greys out Confirm as written only for the CCN, so a confirmation of a course with one of these sentences saves, with a warning.</p>
+    <figure class="tight"><img src="shots/47_description_note.png" alt="The note under Catalog description naming where a sentence belongs"><figcaption>On an update, a note under Catalog description quotes each sentence and names its question. It turns green once the new description leaves them out.</figcaption></figure>
+  </div>
+
+  <h2>Classification and term availability</h2>
+  <p>Asked for every active course, including confirms. On an update, a new CIP code is checked against the NCES CIP 2020 list, and a blank keeps the current one. Confirm as written keeps the CIP code on record, so it shows without a box to type in, and changing it means choosing Update. The Louisiana Common Course Number question records whether the course has a CCN and which one, with a link to the statewide catalog. When the current description names a CCN, the Sweep offers it with <strong>Use it</strong>. Then term availability and any rotation detail. <em>Not sure</em> is a real answer here. It goes to Academic Affairs for review and does not come back to you.</p>
+  <figure class="w75"><img src="shots/12_classification.png" alt="Classification and term availability"></figure>
+
+  <h3>Courses with a Louisiana CCN</h3>
+  <p>The statewide catalog gives each CCN a common title and a description of the minimum content every Louisiana college agrees to cover. BPCC's title and description don't have to match it word for word, but the description should cover that content, and a title that differs from the statewide one should be a deliberate choice. Classification shows the statewide title and description for the course's CCN, so you can compare before you choose a disposition, and the Sweep flags a title or description that reads quite differently, or a CCN that another BPCC course also names.</p>
+
+  <h2 id="cip">The CIP code</h2>
+  <p>A CIP code is the six-digit code from the Classification of Instructional Programs, kept by the National Center for Education Statistics (NCES). Banner holds one for every course, and it tells state and federal reporting what the course teaches. The first two digits name the broad field, so codes starting with 51 are health professions and codes starting with 52 are business.</p>
+
+  <h3>Which code a course should carry</h3>
+  <ul>
+    <li><b>A course in a program</b> generally carries the program's CIP code, the field the program prepares students for. Every WELD course, for example, carries 15.0614, Welding Engineering Technology/Technician.</li>
+    <li><b>A general education course</b> carries the code for its own discipline, whichever programs require it. ENGL 101 carries 23.1304, Rhetoric and Composition, though students in nearly every program take it.</li>
+  </ul>
+  <p>A course that serves more than one program, or one you can't place, is a question for Dr. Megan Bange.</p>
+
+  <h3>How to check it</h3>
+  <ol class="steps">
+    <li><b class="h">Read the code on record.</b>Under Classification, the Sweep shows the course's CIP code with its NCES title.</li>
+    <li><b class="h">Compare it with the rule above.</b>For a program course, check it against the program's code. Your Dean or Dr. Bange can tell you the program's code if you don't have it.</li>
+    <li><b class="h">Look it up if you're unsure what it covers.</b>Under the CIP code, <strong>Read the NCES definition</strong> opens that code's page on the <a href="https://nces.ed.gov/ipeds/cipcode/default.aspx?y=56" target="_blank" rel="noopener">NCES CIP 2020 site</a>, with its definition and examples. The site also finds any code by keyword. If the definition reads like another field entirely, such as a welding course whose code NCES titles Dental Assisting, the code is wrong.</li>
+    <li><b class="h">Answer CIP status.</b>If the code fits, choose <em>Confirmed correct</em>. If it doesn't, choose Update and enter the right code. The Sweep checks it against CIP 2020 and adds a red note asking you to work with Dr. Bange before you submit. If you can't tell, choose <em>Not sure</em>, and Academic Affairs reviews it.</li>
+  </ol>
+  <div class="box key">
+    <div class="t">Check the code before you confirm</div>
+    <p>Confirm as written keeps the CIP code on record, with no box to change it. If the code doesn't fit, choose Update instead.</p>
+  </div>
+
+  <h2>General education competencies</h2>
+  <p>BPCC's general education competencies span the whole curriculum rather than any one course. Check each associate degree competency students build in this course, then at least one of its catalog measures, so each competency can be traced to the courses that embed it. The academic certificate competencies follow, by name. <em>None of these</em> is a valid answer for either set.</p>
+  <p>Computer Literacy now carries measures on using AI tools responsibly and transparently, evaluating AI-generated output, and protecting private information when using AI tools, and the Skills certificate competency names the appropriate use of AI tools. The Deans have asked Program Directors to identify the courses where AI is present, and these measures are how the college records it.</p>
+  <figure class="w75"><img src="shots/13c_competencies_crop.png" alt="General education competencies"><figcaption>The associate degree competencies with Computer Literacy opened. Click a competency to open its measures, then check the ones this course addresses. The academic certificate competencies follow below it in the Sweep.</figcaption></figure>
+
+  <h2>Location</h2>
+  <p>One Yes or No for each setting: the Bossier City, Natchitoches, and Sabine Valley campuses, dual enrollment, online, correctional, and any other site. For the three campuses, Yes means the course is taught face-to-face on that campus. For dual enrollment, Yes means the course is taught face-to-face on location at a high school, not that dual enrollment students can take it. <strong>Mark the rest No</strong> fills in the remaining answers once you have marked the Yes ones.</p>
+  <figure class="w75"><img src="shots/14_location.png" alt="Location"></figure>
+
+  <h2>Enrollment restrictions and special approvals</h2>
+  <p>One Yes or No per restriction (age, program admission, background check, drug screen, immunization, physical requirements, other). Every Yes asks for the wording the catalog should show. Then check which special approvals registration requires, one box per Banner code, or None of these. A section built in Banner can carry only one special approval, so if you check more than one the Sweep asks which one sections should carry.</p>
+  <figure class="w85"><img src="shots/15_restrictions.png" alt="Enrollment restrictions and special approvals"></figure>
+
+  <h2>Course fees</h2>
+  <p>The fees Banner holds for the course appear with their detail code, description, and amount. Confirm them as listed, or choose <em>Change needed</em> to mark a fee for increase, decrease, or removal, or to add a new fee with its amount and rationale. The answer flags the change on the report. The Sweep itself never changes a fee, whether it goes up or down, is added, or is removed. New fees and increases need a memo from the Dean through Dr. Palermo and Chancellor Bateman to Adam Dansby before they take effect. Reductions and eliminations need no memo, but you will need to work with Adam Dansby directly on them.</p>
+  <figure class="w75"><img src="shots/16_fees.png" alt="Course fees"></figure>
+
+  <h2>Industry-Based Certifications</h2>
+  <p>There is no central record of this, so everything here is new information. For each IBC: its name and issuing body; whether this course prepares students on its own or is the final course in a series (an IBC that takes a series is listed on the final course only, and that course names the earlier ones); how the exam fits the course, in six plain choices; whether it is on the LCTC System IBC Master List; whether it is on the PLA matrix for this course; how the exam cost is covered; and what the exam costs per student. Add as many IBCs as the course carries.</p>
+  <figure class="w60"><img src="shots/30_ibc_filled.png" alt="An IBC card filled in"><figcaption>An IBC card filled in. Choosing the series answer opens a list for the earlier courses.</figcaption></figure>
+
+  <h2>Laboratory withdrawal policy (lab courses)</h2>
+  <p>Does a student withdrawal from a corequisite lecture mandate withdrawal from this laboratory? Answer for students who take the lecture at the same time as the lab.</p>
+
+  <h2>Retirement (retirements only)</h2>
+  <p>Last term offered, the reason, a replacement course if there is one, whether an active program still requires the course, students in progress, and a teach-out note. Retiring a course an active program still requires is a program change, and it comes to Academic Affairs as one.</p>
+  <figure class="w75"><img src="shots/31_retire.png" alt="The retirement block"></figure>
+
+  <h2>Sign and save</h2>
+  <p>Your name, your BPCC email, the date, and any notes to Academic Affairs. Notes print on the PDF. The name and email carry to the next course for the rest of your visit.</p>
+</section>
+
+<!-- ============ 7 REQUISITES ============ -->
+<section class="sec" id="requisites">
+  <h1><span class="num">7</span>Prerequisites and corequisites</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">The prerequisite builder asks more of you than any other part of the Sweep, and a rule that reads wrong can keep a student out of a course they are ready for, or let one in before they are. This section sorts out which kind of requirement fits, then walks through building it.</p>
+
+  <h2>Three ways one course can depend on another</h2>
+  <div class="req3">
+    <div class="req">
+      <div class="hd"><b>Prerequisite</b><span>Finish it first</span></div>
+      <div class="bd">
+        <div class="chips"><span class="chip yes"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"/></svg>Earlier term</span><span class="chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6"/></svg>Same term</span></div>
+        <p>The student finishes the other course, or meets a placement score, before this one begins.</p>
+        <div class="in"><b>In the Sweep</b>A requirement in the prerequisite builder</div>
+        <div class="in"><b>Catalog reads</b><i>Prerequisite: ENGL 101</i></div>
+      </div>
+    </div>
+    <div class="req conc">
+      <div class="hd"><b>Concurrent</b><span>Before or alongside</span></div>
+      <div class="bd">
+        <div class="chips"><span class="chip yes"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"/></svg>Earlier term</span><span class="chip yes"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"/></svg>Same term</span></div>
+        <p>The student can finish the other course in an earlier term or take it the same term. Either way works.</p>
+        <div class="in"><b>In the Sweep</b>The same requirement, with <strong>May be taken concurrently</strong> checked</div>
+        <div class="in"><b>Catalog reads</b><i>Prerequisite or concurrent enrollment: BLGY 101</i></div>
+      </div>
+    </div>
+    <div class="req co">
+      <div class="hd"><b>Corequisite</b><span>Together, same term</span></div>
+      <div class="bd">
+        <div class="chips"><span class="chip"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6"/></svg>Earlier term</span><span class="chip yes"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"/></svg>Same term</span></div>
+        <p>Both courses are taken the same term, and passing one in an earlier term doesn't count.</p>
+        <div class="in"><b>In the Sweep</b>The Corequisites row, one course per box</div>
+        <div class="in"><b>Catalog reads</b><i>Corequisite: NURS 200L</i></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Which one fits?</h2>
+  <p>Start with the first question. A yes is your answer. A no moves down to the next question.</p>
+  <div class="flow">
+    <div class="row">
+      <div class="q">Must the other course be finished in an earlier term?</div>
+      <div class="yes">YES<svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h34M31 1.5 36 6l-5 4.5"/></svg></div>
+      <div class="a pre"><b>Prerequisite</b><small>ENGL 101 before ENGL 102</small></div>
+    </div>
+    <div class="down"><span><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v15M1.5 12.5 6 17l4.5-4.5"/></svg>NO</span></div>
+    <div class="row">
+      <div class="q">Is an earlier term or the same term fine?</div>
+      <div class="yes">YES<svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h34M31 1.5 36 6l-5 4.5"/></svg></div>
+      <div class="a conc"><b>Concurrent</b><small>BLGY 101 before or alongside BLGY 101L</small></div>
+    </div>
+    <div class="down"><span><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v15M1.5 12.5 6 17l4.5-4.5"/></svg>NO</span></div>
+    <div class="row">
+      <div class="q">Must every section be taken with the other course, the same term?</div>
+      <div class="yes">YES<svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h34M31 1.5 36 6l-5 4.5"/></svg></div>
+      <div class="a co"><b>Corequisite</b><small>NURS 200 and NURS 200L, taken together</small></div>
+    </div>
+    <div class="down"><span><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v15M1.5 12.5 6 17l4.5-4.5"/></svg>NO</span></div>
+    <div class="row">
+      <div class="q note">Only some sections are paired, like MATH 102 sections with MATH 012L.</div>
+      <div class="yes"><svg viewBox="0 0 40 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h34M31 1.5 36 6l-5 4.5"/></svg></div>
+      <div class="a sec"><b>Set on each section</b><small>The pairing is added to each CRN when the schedule is built. Nothing to add in the Sweep.</small></div>
+    </div>
+  </div>
+
+  <h2 class="brk">Building a prerequisite in the Sweep</h2>
+  <p>Choose Update, then find the Prerequisite row in Update detail. The Banner logic sits at the top under Current, with the builder below it. This is BLGY 206, which needs one chemistry course and one biology course, just after <strong>Start from current</strong>.</p>
+  <div class="annot w80 sm">
+    <img src="shots/50_prereq_groups.png" alt="The prerequisite builder for BLGY 206, with two groups and its parts numbered">
+    <span class="b" style="left:66.6%; top:13.6%">1</span>
+    <span class="b" style="left:42.8%; top:23.0%">2</span>
+    <span class="b" style="left:45.9%; top:29.7%">3</span>
+    <span class="b" style="left:15.0%; top:32.9%">4</span>
+    <span class="b" style="left:62.6%; top:31.1%">5</span>
+    <span class="b" style="left:75.5%; top:39.9%">6</span>
+    <span class="b" style="left:19.8%; top:87.5%">7</span>
+    <span class="b" style="left:97.3%; top:91.5%">8</span>
+  </div>
+  <div class="keys">
+    <div><span class="k">1</span><span><strong>Start from current.</strong> Loads Banner's logic so you edit it rather than retype it. <strong>Remove all prerequisites</strong> beside it takes every one off the course, with Undo.</span></div>
+    <div><span class="k">2</span><span><strong>Students must meet.</strong> How the groups combine: <em>All of the groups</em> or <em>Any one group</em>. It appears once there are two groups.</span></div>
+    <div><span class="k">3</span><span><strong>Students need.</strong> How the requirements inside one group combine: <em>Any one of these</em> or <em>All of these</em>. It appears once a group holds two.</span></div>
+    <div><span class="k">4</span><span><strong>The kind of requirement.</strong> Course, Test score (the Banner test and a minimum score), or Other requirement, such as admission to a program.</span></div>
+    <div><span class="k">5</span><span><strong>Minimum grade.</strong> C or higher is the standard. B or A asks for a short rationale, which prints on the report.</span></div>
+    <div><span class="k">6</span><span><strong>May be taken concurrently.</strong> Check it when students may take this course the same term as yours, not only before.</span></div>
+    <div><span class="k">7</span><span><strong>Add another group,</strong> or use <strong>+ Add a requirement</strong> inside a group. The &times; on a row removes it.</span></div>
+    <div><span class="k">8</span><span><strong>Reads as.</strong> The rule in plain words, exactly as it will be built. A question mark means a connector still needs choosing.</span></div>
+  </div>
+
+  <h2>Think in groups</h2>
+  <p>Every prerequisite in the Sweep is built from groups, at two levels. Inside a group, requirements that can stand in for each other go under <em>Any one of these</em>, and requirements that all apply go under <em>All of these</em>. Between groups, <em>All of the groups</em> means students meet every group, and <em>Any one group</em> means one is enough. Put the rule into words first, then build it, as in these BPCC courses as Banner holds them today.</p>
+  <div class="tbl"><table class="rules">
+    <tr><th>Course</th><th>The rule in words</th><th>How to build it</th></tr>
+    <tr><td class="k">ENGL 102</td><td>ENGL 101 first</td><td>One group with one course</td></tr>
+    <tr><td class="k">ENGL 101</td><td>Any one of five placement scores</td><td>One group, <em>Any one of these</em>, with a Test score requirement for each (ACT English 18, for one)</td></tr>
+    <tr><td class="k">COMM 162</td><td>Both COMM 160 and COMM 216</td><td>One group, <em>All of these</em></td></tr>
+    <tr><td class="k">BLGY 206</td><td>One chemistry course and one biology course</td><td>Group A, <em>Any one of these</em>: CHEM 101, CHEM 107. Group B, <em>Any one of these</em>: BLGY 101, BLGY 230. Students must meet <em>All of the groups</em>.</td></tr>
+    <tr><td class="k">ALHT 115</td><td>BLGY 110, plus either BLGY 120 or BLGY 230</td><td>Group A: BLGY 110. Group B, <em>Any one of these</em>: BLGY 120, BLGY 230. Students must meet <em>All of the groups</em>.</td></tr>
+  </table></div>
+  <div class="box tip avoid">
+    <div class="t">Read it out loud</div>
+    <p>Read the Reads as line the way you would explain the rule to a student. If it says what you mean, the logic is right. A rule that needs more than two levels goes in as the closest version, with the full rule in Notes to Academic Affairs.</p>
+  </div>
+
+  <h2>What Start from current brings over</h2>
+  <p>Start from current copies Banner's logic into groups, so most of the time you only adjust what changed. Course requirements arrive at C or higher, and test scores arrive with their Banner code and minimum score. A placement measure with no test code, such as high school GPA, can go in as an Other requirement.</p>
+  <p>When Banner mixes <em>and</em> with <em>or</em> without parentheses, the intended rule isn't certain, so Start from current puts every requirement in one group with an orange note. Sort them into groups that say what you mean and choose the connectors. Twelve courses are like this, MATH 250 among them.</p>
+  <figure class="w60 tight"><img src="shots/52_prereq_mixed.png" alt="MATH 250's Banner logic and the orange note that it mixes AND and OR without parentheses"></figure>
+
+  <h2>Concurrent enrollment</h2>
+  <p><strong>The Current column can't show whether a requirement may be taken the same term.</strong> The Banner extract the Sweep uses lists each prerequisite course without that detail, so Start from current brings every course requirement over with May be taken concurrently unchecked, even where Banner allows the same term today.</p>
+  <p>That matters most for labs. Of the 36 lab courses in the Sweep, 28 list their lecture as a prerequisite under Current, BLGY 101L among them. If students may take the lecture the same term as the lab, that requirement is concurrent.</p>
+  <figure class="w75"><img src="shots/51_prereq_concurrent.png" alt="BLGY 101L with BLGY 101 marked May be taken concurrently"><figcaption>BLGY 101L, with its lecture marked <b>May be taken concurrently</b>. The Reads as line says so, and so does the report.</figcaption></figure>
+  <div class="box key avoid">
+    <div class="t">If students may take it the same term, say so</div>
+    <p>Whenever you update a prerequisite, check May be taken concurrently on every requirement students may take the same term. Otherwise the report says students must finish it first, and the Registrar's Office has no way to know you meant otherwise. If the same-term option is the only thing missing, it is still worth an update. Where Banner already allows it, the Registrar's Office simply finds nothing to change.</p>
+  </div>
+  <div class="box tip avoid">
+    <div class="t">Two courses that list each other</div>
+    <p>If two courses each list the other as a prerequisite, no student could start either one unless at least one of them may be taken the same term. When you see that, mark the requirement concurrent, or, if the two are always taken together, make them corequisites instead.</p>
+  </div>
+
+  <h2>Corequisites, the exception</h2>
+  <p>A corequisite means the two courses are taken in the same term, and passing one in an earlier term doesn't count. Most courses don't need one. They appear mostly in programs whose courses run as a set each term, such as nursing.</p>
+  <p>A corequisite on a course applies to every section of that course, so before adding one, ask whether every student in every section takes the other course that same term. A corequisite also binds only the course it is on. List it on both courses only when each one truly requires the other.</p>
+  <div class="box key avoid">
+    <div class="t">Paired sections are set on the section, not the course</div>
+    <p>MATH 102 and ENGL 101 run traditional sections with no lab, alongside sections paired with MATH 012L or ENGL 011L, where L01 goes with L01. That pairing is added to each section (CRN) when the schedule is built, so MATH 102 and ENGL 101 carry no corequisite, and there is nothing to add for them in the Sweep. The labs are different, because every section of MATH 012L needs MATH 102. That is why MATH 012L lists MATH 102 as a corequisite on the course.</p>
+  </div>
+  <figure class="w75"><img src="shots/53_coreq.png" alt="The Corequisites row for MATH 012L after Start from current"><figcaption>The Corequisites row on MATH 012L after Start from current. Add one course per box with the course lookup. A list that matches Banner counts as no change.</figcaption></figure>
+  <p>For lab courses, the Laboratory withdrawal question in section 6 records whether withdrawing from the lecture means withdrawing from the lab.</p>
+
+  <div class="box key avoid">
+    <div class="t">Before you save a requisite change</div>
+    <ul style="margin:2pt 0 0 0">
+      <li>Read the Reads as line as a student would.</li>
+      <li>Check May be taken concurrently wherever the same term works.</li>
+      <li>Add a corequisite only when every section needs it.</li>
+      <li>Use a Test score requirement for placement, with the minimum score.</li>
+      <li>Leave a row blank when it is right as it stands. Blank means no change.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 8 BLOCKED ============ -->
+<section class="sec" id="blocked">
+  <h1><span class="num">8</span>When Confirm as written is unavailable</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">For some courses the Confirm as written tile is greyed out, with a note explaining why. There are three reasons, and each has a straightforward path.</p>
+
+  <div class="tbl"><table>
+    <tr><th>Reason</th><th>What to do</th></tr>
+    <tr><td class="k">The description names the Louisiana CCN</td><td>The CCN is moving out of descriptions and onto its own line in the new catalog. Choose Update, and under Catalog description click <strong>Start from current</strong>. The Sweep fills in the current description with the CCN sentence taken out. Then record the number in the CCN question (the Sweep offers it with <strong>Use it</strong>). This applies to 132 courses, most of them in AHSS and STEM.</td></tr>
+    <tr><td class="k">The CIP code is missing or not in the NCES list</td><td>Choose Update and enter a valid CIP code under Classification. A new CIP carries an accreditation note, so work with Dr. Megan Bange before submitting. Or choose Retire.</td></tr>
+    <tr><td class="k">The course carries a retired schedule type or instructional method (WOL or WEBOL)</td><td>Choose Update. The update report lists the removal for the Registrar even if nothing else changes.</td></tr>
+  </table></div>
+
+  <figure class="w85"><img src="shots/23_confirm_unavailable.png" alt="Confirm as written greyed out"><figcaption>Confirm as written greyed out for a course whose description names the CCN.</figcaption></figure>
+  <figure><img src="shots/24_description_required.png" alt="The description row before Start from current"><figcaption><b>Before.</b> A new description is required, and the note under the box says why.</figcaption></figure>
+  <figure><img src="shots/25_description_fixed.png" alt="The description row after Start from current"><figcaption><b>After Start from current.</b> The CCN sentence is gone and the note turns to OK.</figcaption></figure>
+  <figure class="w75"><img src="shots/27_ccn_recorded.png" alt="The CCN recorded in its own question"><figcaption>The CCN recorded in its own question after Use it.</figcaption></figure>
+  <p>An update like this changes nothing else about the course. Leave every other field blank, and the report will show the old description beside the new one with the CCN on its own row.</p>
+  <p>A prerequisite, a cross-listing, a term note, or anything else in the description that has its own question takes the same path. The Sweep flags each one, and Confirm as written stays available for those courses with a warning. Section 6 lists where each one goes.</p>
+</section>
+
+<!-- ============ 9 AFTER ============ -->
+<section class="sec" id="after">
+  <h1><span class="num">9</span>After you submit</h1>
+  <div class="gold-rule"></div>
+  <p>Each submission moves through four steps. The Dean of your division sees it first.</p>
+  <div class="chain">
+    <div class="first"><b>Dean review</b>Your Dean reads the PDF and approves it, which starts the rest of the chain, or returns it to you with a note at the email you entered.</div>
+    <div><b>Banner</b>The Registrar's Office makes the changes in Banner, working from everything the report records about the course.</div>
+    <div><b>Degree Works</b>Rachael Carter, Coordinator for Academic Planning and Data, enters the changes in Degree Works.</div>
+    <div><b>Public catalog</b>Joe Brownlee makes the changes in the public catalog. You and your Dean then receive an email that the review is complete, with the PDF attached.</div>
+  </div>
+  <p>If your Dean returns a course, the note comes straight to you. If the Registrar's Office or Degree Works can't make a change as written, the course goes to Joe Brownlee, who works with you on what to fix. Section 11 covers how to resubmit, and the resubmission goes to your Dean first. Items marked <em>Not sure</em> go to Academic Affairs for review and do not come back to you.</p>
+
+  <h2>Reading the status in the Sweep</h2>
+  <p>The Sweep shows where each course's report is, updated from the submission form every 15 minutes. Once you submit a course, a tag under its course code names the step where the report waits now, and the mark beside it shows whether it is moving, returned, or complete. The course records themselves stay as Banner had them on October 6, 2026, so every course is reviewed against the same snapshot.</p>
+  <figure><img src="shots/04_status_line.png" alt="The status line"><figcaption>The status line says how often status updates, with the legend for the tags and marks.</figcaption></figure>
+  <figure><img src="shots/05_tiles.png" alt="The division tiles with counts"><figcaption>Each division tile counts complete, in process, returned (once any are), and not yet submitted, with a bar in matching colors.</figcaption></figure>
+  <div class="figside">
+    <figure><img src="shots/37_status_list.png" alt="BIT's CTEC courses in the course list, each submitted course with a tag and a mark"><figcaption>Sample statuses on BIT's CTEC courses.</figcaption></figure>
+    <dl>
+      <dt><span class="tagk">DEAN</span></dt><dd>With your Dean for review.</dd>
+      <dt><span class="tagk">BANNER</span></dt><dd>Your Dean approved it, and the Registrar's Office is making the changes in Banner.</dd>
+      <dt><span class="tagk">DEGREE WORKS</span></dt><dd>Banner is done, and Rachael Carter is entering it in Degree Works.</dd>
+      <dt><span class="tagk">CATALOG</span></dt><dd>Banner and Degree Works are done, and Joe Brownlee is updating the public catalog.</dd>
+      <dt><span class="tagk ret">RETURNED</span></dt><dd>A red X. Your Dean returned it, and the note went to the email on the report (section 11).</dd>
+      <dt><span class="tagk done">COMPLETE</span></dt><dd>A green check. Finished in Banner, Degree Works, and the public catalog.</dd>
+    </dl>
+  </div>
+  <p>The filter above the course list shows just the courses not yet submitted, in process, returned, or complete. Open a submitted course and the note under its record names the step and the report's submission ID. If the Registrar's Office or Degree Works sends a course back, it keeps its BANNER or DEGREE WORKS tag while Joe Brownlee works out the change with you.</p>
+  <div class="box tip avoid">
+    <div class="t">Why your division's list matters</div>
+    <p>A course shows up in the Sweep within about 15 minutes of being submitted, but the Sweep never holds your files. Your division's SharePoint list keeps the PDF and the submission file for every course, and the submission file is what you load to fix a returned course, so record each course there as soon as you submit it.</p>
+  </div>
+</section>
+
+<!-- ============ 10 SHAREPOINT LIST ============ -->
+<section class="sec" id="list">
+  <h1><span class="num">10</span>Your division's list in SharePoint</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">Each division has its own list on the Course Inventory Sweep site in SharePoint, with a row for every course in the division. It is where you keep the PDF and the submission file for each course you submit, and where your Dean and colleagues can see what has been submitted and what is still to go. The files stay with the division instead of in one person's downloads folder.</p>
+  <p>Open your division's list with its button below, and bookmark it for next time. The Sweep links to it too, under <strong>Open the submission form</strong> once you save a course. Each list is open to everyone in its division who works on the Sweep, from the Dean and Assistant Dean to the Program Directors and support coordinators, and they all work in the same list. If your list does not open for you, let Joe Brownlee know and he will add you.</p>
+  <div class="lists">
+    <a class="list-btn" href="https://bpccedu.sharepoint.com/sites/CourseInventorySweep/Lists/AHSS%20Course%20Inventory%20Sweep/AllItems.aspx" target="_blank" rel="noopener"><b>AHSS</b><span>Arts, Humanities, and Social Sciences</span></a>
+    <a class="list-btn" href="https://bpccedu.sharepoint.com/sites/CourseInventorySweep/Lists/BIT%20Course%20Inventory%20Sweep/AllItems.aspx" target="_blank" rel="noopener"><b>BIT</b><span>Business and Information Technology</span></a>
+    <a class="list-btn" href="https://bpccedu.sharepoint.com/sites/CourseInventorySweep/Lists/NAH%20Course%20Inventory%20Sweep/AllItems.aspx" target="_blank" rel="noopener"><b>NAH</b><span>Nursing and Allied Health</span></a>
+    <a class="list-btn" href="https://bpccedu.sharepoint.com/sites/CourseInventorySweep/Lists/STEM%20Course%20Inventory%20Sweep/AllItems.aspx" target="_blank" rel="noopener"><b>STEM</b><span>Science, Technology, Engineering, and Mathematics</span></a>
+  </div>
+
+  <h2>The list at a glance</h2>
+  <div class="annot">
+    <img src="assets/sp_list.png" alt="A division's list in SharePoint, with three courses recorded and their parts numbered">
+    <span class="b" style="left:2.6%; top:9.6%">1</span>
+    <span class="b" style="left:21.6%; top:40.8%">2</span>
+    <span class="b" style="left:46.8%; top:9.6%">3</span>
+    <span class="b" style="left:58.8%; top:9.6%">4</span>
+    <span class="b" style="left:73.7%; top:9.6%">5</span>
+    <span class="b" style="left:95.9%; top:9.6%">6</span>
+  </div>
+  <div class="keys">
+    <div><span class="k">1</span><span><strong>Attachments.</strong> A paperclip means files are attached to the course.</span></div>
+    <div><span class="k">2</span><span><strong>A green row.</strong> The row turns green once Submitted as is filled in.</span></div>
+    <div><span class="k">3</span><span><strong>Assigned to.</strong> The Program Director reviewing the course. Your Dean or Assistant Dean fills this in.</span></div>
+    <div><span class="k">4</span><span><strong>Submitted as.</strong> Confirmed, Updated, or Retired, which you fill in after you submit.</span></div>
+    <div><span class="k">5</span><span><strong>Files.</strong> Filled in automatically. <em>Both attached</em> in green, or <em>Missing PDF</em> or <em>Missing .json</em> in red when one file is not there yet.</span></div>
+    <div><span class="k">6</span><span><strong>Submission ID.</strong> Filled in automatically from the PDF's file name.</span></div>
+  </div>
+
+  <p>The tabs at the top right of the list change what it shows. <strong>My courses</strong> shows only the courses assigned to you and is the quickest place to start. <strong>All Items</strong> lists every course in the division, and <strong>By subject</strong> groups them by subject. <strong>Still to go</strong> lists the courses with nothing recorded yet, and <strong>Submitted</strong>, under the <strong>»</strong> at the end of the tabs, lists those already recorded, newest first.</p>
+
+  <h2 class="brk">Recording a course you submitted</h2>
+  <p>Do this right after you click Submit on the submission form, while the two files are still at the top of your downloads folder.</p>
+  <ol class="steps">
+    <li><b class="h">Open the course.</b>Click its course number in the list. The form opens with the course, its Banner title, and who it is assigned to across the top, beside a badge that keeps track of the report files.
+      <div class="annot" style="margin-top:6pt">
+        <img src="assets/sp_course.png" alt="A course opened from the list, before anything is attached, with its parts numbered">
+        <span class="b" style="left:9.0%; top:1.8%">1</span>
+        <span class="b" style="left:87.4%; top:8.8%">2</span>
+        <span class="b" style="left:21.4%; top:21.9%">3</span>
+        <span class="b" style="left:94.9%; top:27.7%">4</span>
+        <span class="b" style="left:8.4%; top:46.9%">5</span>
+        <span class="b" style="left:8.4%; top:58.0%">6</span>
+        <span class="b" style="left:12.6%; top:70.7%">7</span>
+        <span class="b" style="left:23.0%; top:87.0%">8</span>
+      </div>
+      <div class="keys">
+        <div><span class="k">1</span><span><strong>Edit all.</strong> Opens the course for editing.</span></div>
+        <div><span class="k">2</span><span><strong>The file badge.</strong> <em>No report files yet</em> until you attach them, then <em>Both files attached</em> or which file is missing.</span></div>
+        <div><span class="k">3</span><span><strong>Assigned to.</strong> Who is reviewing the course.</span></div>
+        <div><span class="k">4</span><span><strong>The steps,</strong> repeated on every course.</span></div>
+        <div><span class="k">5</span><span><strong>Report files.</strong> Where your two attachments go.</span></div>
+        <div><span class="k">6</span><span><strong>Submission.</strong> The fields you fill in.</span></div>
+        <div><span class="k">7</span><span><strong>Filled in automatically.</strong> Leave these to the list.</span></div>
+        <div><span class="k">8</span><span><strong>Links</strong> back to the Sweep and to this guide, with who to contact.</span></div>
+      </div>
+    </li>
+    <li><b class="h">Choose Edit all, then attach both files.</b>Edit all sits at the top left of the form. Under Report files, choose <strong>Add attachments</strong> and pick the PDF, then do the same for the submission file (the one ending in <span class="mono">_submission.json</span>).</li>
+    <li><b class="h">Fill in the Submission fields, then save.</b>Choose what you submitted under Submitted as, enter the date you submitted it, and add your name under Submitted by. Notes is for anything worth keeping. Then choose <strong>Save</strong> at the bottom.
+      <div class="annot" style="margin-top:6pt">
+        <img src="assets/sp_filled.png" alt="The course in edit mode with both files attached and the Submission fields filled in, with its parts numbered">
+        <span class="b" style="left:13.6%; top:17.3%">1</span>
+        <span class="b" style="left:22.7%; top:28.1%">2</span>
+        <span class="b" style="left:18.9%; top:48.5%">3</span>
+        <span class="b" style="left:42.1%; top:48.5%">4</span>
+        <span class="b" style="left:65.3%; top:48.5%">5</span>
+        <span class="b" style="left:88.4%; top:54.1%">6</span>
+        <span class="b" style="left:45.8%; top:80.5%">7</span>
+        <span class="b" style="left:87.9%; top:95.7%">8</span>
+      </div>
+      <div class="keys">
+        <div><span class="k">1</span><span><strong>The two files,</strong> attached. An X removes one.</span></div>
+        <div><span class="k">2</span><span><strong>Add attachments,</strong> for the next file.</span></div>
+        <div><span class="k">3</span><span><strong>Submitted as.</strong> Confirmed, Updated, or Retired.</span></div>
+        <div><span class="k">4</span><span><strong>Date submitted.</strong> The day you submitted the form.</span></div>
+        <div><span class="k">5</span><span><strong>Submitted by.</strong> Your name.</span></div>
+        <div><span class="k">6</span><span><strong>Notes.</strong> Anything worth keeping, such as which report a resubmission replaces.</span></div>
+        <div><span class="k">7</span><span><strong>Filled in automatically.</strong> Leave Submission ID and Files blank.</span></div>
+        <div><span class="k">8</span><span><strong>Save.</strong></span></div>
+      </div>
+    </li>
+    <li><b class="h">Let the list finish the rest.</b>Within a few minutes, Submission ID fills in from the PDF's name and Files reports whether both files are there. If it says Missing PDF or Missing .json, open the course, choose Edit all, and attach the one that is missing.</li>
+  </ol>
+
+  <div class="box tip avoid">
+    <div class="t">Attach the files to the right course</div>
+    <p>The list checks that a PDF and a submission file are attached, not which course they belong to. Both file names start with the course, such as <span class="mono">ANTH201_Confirmed_...</span>, so a quick look before you save keeps each course's files on its own row.</p>
+  </div>
+
+  <h2>Resubmitting a returned course</h2>
+  <p>When you resubmit a course (section 11), attach the new PDF and submission file beside the first pair rather than replacing them, so the course keeps a record of both reports. Update Submitted as and Date submitted if they changed, and add <em>Replaces</em> and the earlier submission ID in Notes. Submission ID moves to the newest report on its own.</p>
+
+  <div class="role brk">
+    <div class="role-head">
+      <div class="kick">Program Directors can skip ahead to section 11</div>
+      <h2>For Deans and Assistant Deans: assigning courses</h2>
+    </div>
+    <div class="role-body">
+      <p>Choose <strong>Edit in grid view</strong> at the top of the list. Click a course's Assigned to cell, type the Program Director's name, and pick them from the suggestions. Choose <strong>Exit grid view</strong> when you're done. Each Program Director then finds their courses under My courses.</p>
+      <div class="annot w80">
+        <img src="assets/sp_assign.png" alt="The list in grid view, with a name being typed in Assigned to and the matching person suggested">
+        <span class="b" style="left:15.6%; top:9.5%">1</span>
+        <span class="b" style="left:94.5%; top:76.8%">2</span>
+        <span class="b" style="left:69.0%; top:85.6%">3</span>
+      </div>
+      <div class="keys">
+        <div><span class="k">1</span><span><strong>Edit in grid view.</strong> It reads Exit grid view while you are in it.</span></div>
+        <div><span class="k">2</span><span><strong>Type a name</strong> in Assigned to.</span></div>
+        <div><span class="k">3</span><span><strong>Pick the person</strong> from the suggestions.</span></div>
+      </div>
+      <h3>Several courses at once</h3>
+      <p>Click a cell that already has the Program Director's name and press <kbd>Ctrl</kbd>+<kbd>C</kbd>. Click the first Assigned to cell you want to fill, hold <kbd>Shift</kbd>, and click the last one to select every cell in between. Press <kbd>Ctrl</kbd>+<kbd>V</kbd>, and the name fills them all. On a Mac, use <kbd>Command</kbd> in place of <kbd>Ctrl</kbd>. The list is sorted by course, so a program's courses with the same prefix sit together and are quick to select.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 RETURNED ============ -->
+<section class="sec" id="returned">
+  <h1><span class="num">11</span>Fixing a returned course</h1>
+  <div class="gold-rule"></div>
+  <p>This is what the submission file is for. When a course comes back, you do not start over. A course your Dean returns shows a red X and RETURNED in the Sweep's course list, and the Dean's note comes to the email on the report.</p>
+  <ol class="steps">
+    <li><b class="h">Check your division's list in SharePoint.</b>Open the course's row. The submission file, ending in <span class="mono">_submission.json</span>, is attached there beside the PDF and named by the same submission ID. The returned course's note in the Sweep names the file, and section 10 has a button for each division's list.
+      <figure class="w85" style="margin-top:6pt"><img src="shots/39_returned_note.png" alt="A returned course's note naming the submission file to load"><figcaption>A returned course's note names the submission file to load.</figcaption></figure>
+    </li>
+    <li><b class="h">Click Start from previous submission in the Sweep's header, and choose the file.</b>The Sweep opens that course, restores every answer and your name, and marks the next report as replacing the one you saved, with the earlier ID filled in.</li>
+    <li><b class="h">Change what was asked, then save and submit again.</b>The new report says at the top which submission it replaces, so Academic Affairs keeps the right one.</li>
+  </ol>
+  <figure class="w85"><img src="shots/33_loaded.png" alt="A course loaded from its submission file"><figcaption>The green note confirms which file was loaded and which submission the next report replaces.</figcaption></figure>
+  <figure class="w85"><img src="shots/34_loaded_replaces.png" alt="The submission question filled in as a replacement"><figcaption>The submission question is already set to replace the earlier report.</figcaption></figure>
+  <p>If you would rather start the course fresh than load the file, choose a disposition as usual. Because the course has a report on record, the Sweep answers the submission question for you and fills in that report's ID.</p>
+  <figure class="w75"><img src="shots/38_replaces_record.png" alt="The submission question answered Yes, with the submission ID of the report on record filled in"><figcaption>A course with a report on record, started fresh. The Sweep answers Yes and fills in the ID, and the line under it says where the ID came from.</figcaption></figure>
+  <p>The Sweep checks the file as it loads. A choice that is no longer offered comes back blank, and if the course's fees on record have changed since the file was saved, a note asks you to mark them again. A file from another course, or a file that is not a submission file, is refused with a plain message and nothing changes.</p>
+</section>
+
+<!-- ============ 12 FAQ ============ -->
+<section class="sec" id="faq">
+  <h1><span class="num">12</span>Common questions</h1>
+  <div class="gold-rule"></div>
+  <dl class="qa">
+    <dt>Which courses are mine?</dt>
+    <dd>The courses in the programs you direct. The Sweep lists courses by division rather than by program, so work from your program's plan and confirm the list with your Dean or Assistant Dean. A course shared across programs needs one review, and the Dean of the division where it lives assigns it.</dd>
+
+    <dt>Can I come back later and pick up where I left off?</dt>
+    <dd>Yes, course by course. Every course you have saved and submitted is done. The Sweep itself starts fresh each visit, so a course left half-answered starts over. The Still to go view in your division's list and the status filter in the Sweep show where to pick up.</dd>
+
+    <dt>Why two files?</dt>
+    <dd>The PDF is the readable report that your Dean, the Registrar, and Academic Affairs work from. The submission file is the same answers in a form the Sweep can read back, which is what lets you fix a returned course without retyping it and lets Academic Affairs keep a machine-readable record of every course reviewed. The form requires both.</dd>
+
+    <dt>One of my files did not save.</dt>
+    <dd>The report is still saved. The panel at the bottom shows the file that was not saved with a Try again button, and the form button stays in place with a note that the form needs both files. If nothing will save, open How this works and run the download check (section 3). When it cannot save its test files either, the computer is stopping downloads, so use another one and let Joe Brownlee know which.</dd>
+
+    <dt>What are the CourseSweep_Test_Passed_DELETE files in my downloads?</dt>
+    <dd>They come from the download check and only show that your computer can save the Sweep's files. Delete them, and never attach them to the submission form.</dd>
+
+    <dt>The Sweep says the files no longer match my answers.</dt>
+    <dd>You changed something after saving. Save again. If the earlier files were already submitted, choose Mark it as replacing so the new report names the old one. If they were not, leave it as a first submission and discard the old files.</dd>
+
+    <dt>I do not have the earlier submission ID.</dt>
+    <dd>Once Academic Affairs has a report for the course on record, the Sweep fills in its ID for you. If it does not, check <em>I don't have the earlier ID</em> on the submission question. The report says so, and Academic Affairs matches it to the earlier report by course.</dd>
+
+    <dt>What is the difference between the red list, the orange warnings, and the red notes?</dt>
+    <dd>The red list under <em>Before the report can be saved</em> holds answers that are required; the save button appears when it is empty. Orange warnings are advice (a description over 100 words, an email outside bpcc.edu, a question left unanswered) and never stop a save. The red <em>Accreditation implications</em> notes appear for credit hour and CIP changes and ask you to work with Dr. Megan Bange; they do not stop a save either.</dd>
+
+    <dt>Is Not sure a real answer?</dt>
+    <dd>Yes, on CIP, the Louisiana CCN, an IBC's Master List status, and how an IBC exam fits the course. Anything marked for review comes to Academic Affairs and will not come back to you.</dd>
+
+    <dt>When is my deadline?</dt>
+    <dd>Every course review is due by Thursday, December 10 at 4:30 p.m. Central, the day before graduation. Your Dean may set an earlier date for your division, so check with them. The countdown at the top of the Sweep shows the time left.</dd>
+
+    <dt>What belongs in a course description?</dt>
+    <dd>What the course covers, in a few plain sentences that hold true for every section in every term. Prerequisites, cross-listings, hours, term notes, admission requirements, fees, and certification exams each have their own question in the Sweep, and a description that carries one of them needs an update. Section 6 lists where each one goes, with a before-and-after example.</dd>
+
+    <dt>Does Confirm as written need approval?</dt>
+    <dd>Beyond your Dean's review, no. It still goes through the chain so that any new information it carries, such as locations or competencies, reaches Banner, Degree Works, and the catalog.</dd>
+
+    <dt>Can I use my phone?</dt>
+    <dd>The Sweep works at phone width, but a laptop or desktop is easier, because each course ends with two files that you attach to the form and to your division's list.</dd>
+
+    <dt>Can I change the colors?</dt>
+    <dd>Yes. The Theme button in the header offers High contrast for projectors and bright rooms, Night for low light, and Color-safe for color vision. The reports look the same in every theme.</dd>
+
+    <dt>Where do fee changes go?</dt>
+    <dd>On the report, as a flag. The Sweep does not change fees. New fees and increases need the memo described in section 6; reductions and eliminations go to Adam Dansby directly.</dd>
+  </dl>
+</section>
+
+<!-- ============ 13 CONTACT ============ -->
+<section class="sec" id="contact">
+  <h1><span class="num">13</span>Who to contact</h1>
+  <div class="gold-rule"></div>
+  <p class="lede">Questions? We're here to help!</p>
+  <div class="contacts">
+    <div class="contact">
+      <div class="n">Joe Brownlee</div>
+      <div class="r">Associate Vice Chancellor of Instruction</div>
+      <div class="d">A-204 · jbrownlee@bpcc.edu · x6152<br>The Sweep, submissions, returns, and status</div>
+    </div>
+    <div class="contact">
+      <div class="n">Dr. Megan Bange</div>
+      <div class="r">Associate Vice Chancellor of Planning, Budgeting, and Resources<br>Accreditation Liaison</div>
+      <div class="d">A-218 · mbange@bpcc.edu · x6554<br>Credit hour and CIP changes, accreditation implications</div>
+    </div>
+    <div class="contact">
+      <div class="n">Adam Dansby</div>
+      <div class="r">Director of Business Operations</div>
+      <div class="d">adansby@bpcc.edu · x6362<br>Course fees, billing hours, and the fee memo</div>
+    </div>
+    <div class="contact">
+      <div class="n">Your Dean</div>
+      <div class="r">Dean review</div>
+      <div class="d">Which courses are yours, your division's deadline, and the first look at every submission</div>
+    </div>
+  </div>
+  <div class="book">
+    <div class="book-copy">
+      <div class="t">Want some extra support?</div>
+      <p>If you'd like to work through a few submissions together or talk through a question, Joe Brownlee and Dr. Megan Bange are happy to meet. Book with Joe for anything about the Sweep and your submissions, or with Dr. Bange for credit hour and CIP changes and accreditation questions. Pick a time that works for you, and the call is set up in Teams.</p>
+    </div>
+    <div class="book-acts">
+      <a class="book-btn" href="https://bookings.cloud.microsoft/bookwithme/user/e57bf25330af4453b298f673af8e0191@bpcc.edu/meetingtype/avUpRAL5BE-Vn0dVdNzmDw2?anonymous&amp;ismsaljsauthenabled&amp;ep=mcard" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Book time with Joe</a>
+      <a class="book-btn" href="https://bookings.cloud.microsoft/bookwithme/user/1b384762461c48428e36236a2bc28d64%40bpcc.edu?anonymous&amp;ismsaljsauthenabled=true" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>Book time with Dr. Bange</a>
+    </div>
+  </div>
+  <div class="end">Course Inventory Sweep · How-to guide for Program Directors · Office of Academic Affairs, Bossier Parish Community College · November 2026. The Sweep and its reports carry the Banner extract dated 10/6/26. BPCC is a member of the LCTC System.</div>
+</section>
+
+</main>
+</body>
+</html>
