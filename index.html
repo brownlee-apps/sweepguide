@@ -10,7 +10,7 @@
 <style>
 
 :root {
-  /* Layout: one source for two renderings. Print is the Letter-size PDF; screen is one reading column under a maroon cover band. */
+  
   --maroon: #8D042D; --gold: #FEBA12; --dark: #56000C; --orange: #F7941D;
   --ink: #1F1A1B; --mute: #5E5558; --line: #E2D9DB; --cream: #FFFBF0; --paper: #FFFFFF; --wash: #F7F2F3;
   --accent: #8D042D; --accent-2: #56000C; --num: #FEBA12; --key-bg: #FBF0F3; --key-line: #E7C3CD; --focus: #F7941D; --role-bg: #FFF5DA;
@@ -18,7 +18,7 @@
   --font-display: "Bebas Neue", Impact, "Arial Narrow", Arial, sans-serif;
   --font-body: "Montserrat", Arial, Helvetica, sans-serif;
 }
-/* Dark theme applies on screen only, so the PDF always prints in the light palette. */
+
 @media screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --ink: #F2E8EA; --mute: #C4B4B8; --line: #3D252C; --cream: #2B2311; --paper: #170B0F; --wash: #24141A;
@@ -39,11 +39,7 @@ a { color: var(--accent); text-decoration: none; }
 strong { font-weight: 600; }
 .mono { font-family: "Menlo", "Consolas", "Courier New", monospace; font-size: 0.92em; }
 
-/* ---------- cover ----------
-   Option B, chosen October 25, 2026: a gold field with the maroon logo on it, the title in maroon, and the
-   Bossier City, Natchitoches, and Sabine Valley campuses as three equal circles on the seam where gold meets
-   maroon. Solid fills and opaque images only (the logo is flattened onto gold in assets/logo_on_gold.png),
-   since some PDF viewers draw transparency badly. */
+
 .cover { width: 8.5in; height: 11in; background: var(--gold); color: var(--dark); position: relative; overflow: hidden; page-break-after: always; }
 .cover .low { position: absolute; left: 0; top: 7.6in; width: 8.5in; height: 3.4in; background: var(--maroon); }
 .cover .logo { position: absolute; left: 0.62in; top: 0.62in; width: 2.75in; display: block; }
@@ -59,7 +55,7 @@ strong { font-weight: 600; }
 .cover .ring small { display: block; margin-top: 3pt; font-size: 7.5pt; letter-spacing: 0.24em; text-transform: uppercase; color: #F6E3E8; font-weight: 600; }
 .cover .foot { position: absolute; left: 0.66in; right: 0.62in; bottom: 0.4in; display: flex; justify-content: space-between; font-size: 8.5pt; color: #F6E3E8; letter-spacing: 0.14em; text-transform: uppercase; border-top: 1pt solid var(--gold); padding-top: 7pt; }
 
-/* ---------- contents ---------- */
+
 .toc h1 { margin-top: 0; }
 .toc ol { list-style: none; margin: 0; padding: 0; }
 .toc li { padding: 4pt 0; border-bottom: 1px solid var(--line); font-size: 11pt; }
@@ -69,7 +65,7 @@ strong { font-weight: 600; }
 .toc li .p { font-family: "Bebas Neue", Arial, sans-serif; font-size: 15pt; color: var(--accent); min-width: 20pt; text-align: right; }
 .toc li .s { display: block; font-size: 8.8pt; color: var(--mute); margin-top: 1pt; }
 
-/* ---------- sections ---------- */
+
 section.sec { page-break-before: always; }
 h1 { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 34pt; line-height: 1; color: var(--accent); margin: 0 0 4pt 0; letter-spacing: 0.01em; }
 section:not(.sec) > h1 { page-break-after: avoid; break-after: avoid; }
@@ -79,7 +75,7 @@ h1 .num { color: var(--num); margin-right: 8pt; }
 h2 { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 19pt; line-height: 1.05; color: var(--accent-2); margin: 16pt 0 5pt 0; letter-spacing: 0.02em; page-break-after: avoid; break-after: avoid; }
 h3 { font-size: 10.6pt; font-weight: 700; color: var(--accent); margin: 12pt 0 3pt 0; page-break-after: avoid; break-after: avoid; }
 
-/* figures */
+
 figure { margin: 8pt 0 12pt 0; page-break-inside: avoid; break-inside: avoid; }
 figure img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4pt; break-inside: avoid; page-break-inside: avoid; }
 figure, .annot { display: block; }
@@ -93,11 +89,11 @@ figcaption { font-size: 8.6pt; color: var(--mute); margin-top: 4pt; line-height:
 figcaption b { color: var(--accent); font-weight: 600; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; align-items: start; }
 .two figure { margin-top: 4pt; }
-/* the submission form, shown in two halves; border-box keeps the right half's border inside the page */
+
 .two.jf { margin-top: 6pt; }
 .two.jf img { box-sizing: border-box; }
 
-/* annotated figure */
+
 .annot { position: relative; margin: 6pt 0 10pt 0; page-break-inside: avoid; }
 .annot img { width: 100%; display: block; border: 1px solid var(--line); border-radius: 4pt; }
 .annot .b { position: absolute; width: 17pt; height: 17pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 12.5pt; line-height: 17pt; text-align: center; box-shadow: 0 0 0 2pt #fff, 0 2pt 6pt rgba(0,0,0,0.35); transform: translate(-50%, -50%); }
@@ -105,7 +101,7 @@ figcaption b { color: var(--accent); font-weight: 600; }
 .keys div { display: flex; gap: 6pt; align-items: flex-start; }
 .keys .k { flex: none; width: 15pt; height: 15pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 11pt; line-height: 15pt; text-align: center; margin-top: 1pt; }
 
-/* callouts */
+
 .box { border-radius: 4pt; padding: 8pt 11pt; margin: 8pt 0 10pt 0; page-break-inside: avoid; break-inside: avoid; font-size: 9.7pt; line-height: 1.5; }
 .box.tip { background: var(--cream); border: 1px solid var(--gold); box-shadow: inset 3pt 0 0 var(--gold); }
 .box.key { background: var(--key-bg); border: 1px solid var(--key-line); box-shadow: inset 3pt 0 0 var(--maroon); }
@@ -115,32 +111,32 @@ figcaption b { color: var(--accent); font-weight: 600; }
 .box .t { font-weight: 700; color: var(--accent); font-size: 8.6pt; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2pt; }
 .box p:last-child { margin-bottom: 0; }
 
-/* steps */
+
 ol.steps { list-style: none; margin: 4pt 0 6pt 0; padding: 0; counter-reset: s; }
 ol.steps > li { position: relative; padding-left: 30pt; margin-bottom: 9pt; counter-increment: s; }
 ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: 1pt; width: 20pt; height: 20pt; border-radius: 50%; background: var(--maroon); color: #fff; font-family: "Bebas Neue", Arial, sans-serif; font-size: 14pt; line-height: 20pt; text-align: center; }
 ol.steps > li b.h { display: block; font-weight: 700; color: var(--accent-2); margin-bottom: 1pt; page-break-after: avoid; break-after: avoid; }
 
-/* why cards */
+
 .why { display: grid; grid-template-columns: 1fr 1fr; gap: 9pt; margin: 6pt 0 4pt 0; }
 .why .card { border: 1px solid var(--line); border-top: 4pt solid var(--maroon); border-radius: 4pt; padding: 7pt 10pt 6pt 10pt; page-break-inside: avoid; break-inside: avoid; }
 .why .card h3 { margin: 0 0 2pt 0; font-size: 10.4pt; }
 .why .card p { font-size: 9.2pt; line-height: 1.42; margin: 0; }
 
-/* plain lists */
+
 ul { margin: 2pt 0 8pt 0; padding-left: 16pt; }
 li { margin-bottom: 3pt; }
 dl.qa dt { font-weight: 700; color: var(--accent-2); margin-top: 9pt; page-break-after: avoid; }
 dl.qa dd { margin: 2pt 0 0 0; }
 
-/* tables */
+
 table { width: 100%; border-collapse: collapse; font-size: 9.4pt; margin: 6pt 0 10pt 0; }
 tr { page-break-inside: avoid; break-inside: avoid; }
 th { text-align: left; font-weight: 700; color: var(--accent); border-bottom: 2px solid var(--gold); padding: 5pt 6pt; font-size: 8.8pt; letter-spacing: 0.06em; text-transform: uppercase; }
 td { border-bottom: 1px solid var(--line); padding: 5pt 6pt; vertical-align: top; }
 td.k { font-weight: 600; width: 1.6in; color: var(--accent-2); }
 
-/* contacts */
+
 .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 10pt; }
 .contact { background: var(--wash); border-radius: 4pt; padding: 11pt 13pt; page-break-inside: avoid; }
 .contact .n { font-family: "Bebas Neue", Arial, sans-serif; font-size: 18pt; color: var(--accent); line-height: 1; }
@@ -156,7 +152,7 @@ td.k { font-weight: 600; width: 1.6in; color: var(--accent-2); }
 .uses p { margin-bottom: 6pt; }
 .brk { page-break-before: always; }
 .end { margin-top: 18pt; border-top: 2px solid var(--gold); padding-top: 8pt; font-size: 8.8pt; color: var(--mute); }
-/* the booking call-out under the contact cards: solid fills only, and each button is a real link in the PDF too */
+
 .book-acts { flex: none; display: flex; flex-direction: column; gap: 6pt; }
 .book-acts a.book-btn { justify-content: flex-start; }
 .book { display: flex; align-items: center; gap: 14pt; margin: 14pt 0 4pt 0; padding: 11pt 14pt 11pt 14pt; background: var(--key-bg); border: 1px solid var(--key-line); border-left: 5pt solid var(--maroon); border-radius: 4pt; page-break-inside: avoid; break-inside: avoid; }
@@ -166,9 +162,7 @@ td.k { font-weight: 600; width: 1.6in; color: var(--accent-2); }
 a.book-btn { flex: none; display: inline-flex; align-items: center; gap: 6pt; background: #8D042D; color: #FFFFFF; font-weight: 700; font-size: 9.6pt; line-height: 1.2; padding: 8pt 12pt; border-radius: 4pt; text-decoration: none; white-space: nowrap; }
 a.book-btn svg { width: 11pt; height: 11pt; flex: none; }
 
-/* ---------- section 7: requisites ----------
-   The three kinds as cards with solid header bands (the quick guide's colors), and the decision path as rows:
-   a question, a Yes arrow to its answer, and a No step down to the next question. Solid fills only. */
+
 .req3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9pt; margin: 6pt 0 6pt 0; }
 .req { border: 1px solid var(--line); border-radius: 4pt; overflow: hidden; background: var(--paper); display: flex; flex-direction: column; page-break-inside: avoid; break-inside: avoid; }
 .req .hd { padding: 7pt 10pt 6pt 10pt; background: #8D042D; color: #FFFFFF; }
@@ -207,8 +201,7 @@ a.book-btn svg { width: 11pt; height: 11pt; flex: none; }
 .flow .down svg { width: 8pt; height: 10pt; }
 table.rules td.k { width: 0.85in; white-space: nowrap; }
 figure.tight { margin-top: 4pt; margin-bottom: 8pt; }
-/* section 6's description sample (November 14, 2026): each sentence beside where it goes. Sentences that stay sit on
-   cream with a gold bar, and sentences that move read in the muted color. Solid fills only. */
+
 table.where td.k { width: 2.3in; }
 table.dex td.s { width: 66%; }
 table.dex tr.stay td { background: var(--cream); }
@@ -216,7 +209,7 @@ table.dex tr.stay td.s { box-shadow: inset 3pt 0 0 var(--gold); padding-left: 9p
 table.dex tr.move td.s { color: var(--mute); }
 table.dex td.w { font-weight: 600; color: var(--accent-2); }
 table.dex tr.stay td.w { color: var(--accent); }
-/* a screenshot beside its key (section 9's course list, October 29, 2026) */
+
 .figside { display: grid; grid-template-columns: 27% 1fr; gap: 16pt; align-items: start; margin: 8pt 0 12pt 0; break-inside: avoid; page-break-inside: avoid; }
 .figside figure { margin: 0; }
 .figside dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 7pt 10pt; align-items: baseline; font-size: 9.6pt; line-height: 1.4; }
@@ -228,7 +221,7 @@ table.dex tr.stay td.w { color: var(--accent); }
 table.rules td:nth-child(2) { width: 2in; }
 .annot.w80 { width: 80%; }
 .annot.w92 { width: 92%; margin-left: auto; margin-right: auto; }
-/* Section 10's part for Deans and Assistant Deans sits in its own panel: a dark maroon band over a light gold field. */
+
 .role { border: 1.2pt solid var(--gold); border-radius: 6pt; background: var(--role-bg); overflow: hidden; page-break-inside: avoid; break-inside: avoid; margin: 0 0 8pt 0; }
 .role-head { background: #56000C; border-bottom: 3pt solid #FEBA12; padding: 10pt 14pt 9pt 14pt; }
 .role-head .kick { color: #FEBA12; font-size: 7.6pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1.2; }
@@ -238,19 +231,19 @@ table.rules td:nth-child(2) { width: 2in; }
 .role-body .keys { width: 80%; margin-left: auto; margin-right: auto; grid-template-columns: repeat(3, 1fr); }
 .role-body h3 { font-size: 10.2pt; font-weight: 700; color: var(--accent-2); margin: 6pt 0 3pt 0; page-break-after: avoid; break-after: avoid; }
 kbd { font-family: "Montserrat", Arial, sans-serif; font-size: 0.82em; font-weight: 600; color: var(--ink); background: var(--paper); border: 1px solid var(--key-line); border-bottom-width: 2px; border-radius: 3pt; padding: 0 3.5pt; white-space: nowrap; }
-/* section 10: a button for each division's SharePoint list (solid fills; gold over maroon, a preferred pairing) */
+
 .lists { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7pt; margin: 4pt 0 6pt 0; page-break-inside: avoid; break-inside: avoid; }
 a.list-btn { display: flex; flex-direction: column; justify-content: flex-start; background: #8D042D; color: #FFFFFF; border-radius: 4pt; padding: 6pt 9pt 7pt 9pt; text-decoration: none; }
 a.list-btn b { font-family: "Bebas Neue", Arial, sans-serif; font-weight: 400; font-size: 18pt; line-height: 1; letter-spacing: 0.04em; color: #FEBA12; }
 a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #FFFFFF; }
-/* smaller badges where the screenshot is dense */
+
 .annot.sm .b { width: 14pt; height: 14pt; font-size: 10.5pt; line-height: 14pt; }
 
-/* ---------- print and screen helpers ---------- */
+
 @media print { .screen-only { display: none !important; } }
 @media screen { .print-only { display: none !important; } }
 
-/* ---------- screen rendering (the published page) ---------- */
+
 @media screen {
   body { font-family: var(--font-body); font-size: 16px; line-height: 1.62; }
   p { margin: 0 0 12px 0; }
@@ -268,7 +261,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   .cover .t2 { font-size: clamp(108px, 29vw, 250px); line-height: 0.84; margin-left: -0.04em; }
   .cover .rule { width: 110px; height: 6px; margin-top: 18px; }
   .cover .t3 { font-size: clamp(22px, 4.2vw, 32px); margin-top: 12px; text-wrap: balance; }
-  /* the seam runs through the middle of the three circles: gold above, maroon below (two hard stops, no blend) */
+  
   .cover-base { --ring: min(210px, 27vw); background: linear-gradient(var(--gold) calc(var(--ring) / 2 + 6px), var(--maroon) calc(var(--ring) / 2 + 6px)); padding: 6px 0 26px; }
   .cover-base-in { max-width: 940px; margin: 0 auto; box-sizing: border-box;
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -280,7 +273,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   .cover .foot { width: 100%; margin-top: 30px; font-size: 11px; box-sizing: border-box; gap: 12px; }
   .cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 26px; }
   .cover-actions .updated { font-size: 13px; color: var(--dark); letter-spacing: 0.04em; font-weight: 500; }
-  /* Download the PDF, on the guide's own site only (site.py); maroon over gold, solid fills */
+  
   a.pdf-btn { display: inline-flex; align-items: center; gap: 10px; background: #8D042D; color: #FFFFFF; text-decoration: none;
     font: 700 15px/1.2 var(--font-body); padding: 12px 18px; border-radius: 6px; }
   a.pdf-btn:hover { background: #56000C; }
@@ -394,7 +387,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   .req3 { grid-template-columns: 1fr; }
   table.rules td:nth-child(2) { width: auto; }
   table.rules td.k { width: auto; }
-  /* the question takes the full width; Yes sits in a narrow column beside its answer, and No steps down at the left */
+  
   .flow .row { grid-template-columns: 58px 1fr; row-gap: 8px; }
   .flow .row .q { grid-column: 1 / -1; }
   .flow .yes svg { width: 30px; }
@@ -425,7 +418,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
 </style>
 </head>
 <body>
-<!-- ============ COVER ============ -->
+
 <div class="cover">
   <div class="low"></div>
   <div class="cover-in">
@@ -451,7 +444,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
 </div>
 
 <main class="doc">
-<!-- ============ CONTENTS ============ -->
+
 <section class="toc">
   <h1>Contents</h1>
   <div class="gold-rule"></div>
@@ -472,7 +465,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </ol>
 </section>
 
-<!-- ============ 1 WHAT ============ -->
+
 <section class="sec" id="what">
   <h1><span class="num">1</span>What the Sweep is, and why now</h1>
   <div class="gold-rule"></div>
@@ -517,7 +510,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </table></div>
 </section>
 
-<!-- ============ 2 WHY ============ -->
+
 <section class="sec" id="why">
   <h1><span class="num">2</span>Why this matters to you</h1>
   <div class="gold-rule"></div>
@@ -557,7 +550,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </div>
 </section>
 
-<!-- ============ 3 BEFORE ============ -->
+
 <section id="before" style="margin-top:26pt">
   <h1><span class="num">3</span>Before you start</h1>
   <div class="gold-rule"></div>
@@ -590,7 +583,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
 
 </section>
 
-<!-- ============ 4 GLANCE ============ -->
+
 <section class="sec" id="glance">
   <h1><span class="num">4</span>The Sweep at a glance</h1>
   <div class="gold-rule"></div>
@@ -627,7 +620,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   <figure class="w85"><img src="shots/03_how_this_works.png" alt="The How this works panel"><figcaption>The <b>How this works</b> panel, opened from the header. It restates the six steps, with a button for each division's list in SharePoint, and ends with the download check for a computer that won't save (section 3). The build number at the bottom right names the version of the Sweep you have open, which helps if you ever report a problem.</figcaption></figure>
 </section>
 
-<!-- ============ 5 STEPS ============ -->
+
 <section class="sec" id="steps">
   <h1><span class="num">5</span>Reviewing a course, step by step</h1>
   <div class="gold-rule"></div>
@@ -665,7 +658,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </div>
 </section>
 
-<!-- ============ 6 QUESTIONS ============ -->
+
 <section class="sec" id="questions">
   <h1><span class="num">6</span>What the questions are asking</h1>
   <div class="gold-rule"></div>
@@ -822,7 +815,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   <p>Your name, your BPCC email, the date, and any notes to Academic Affairs. Notes print on the PDF. The name and email carry to the next course for the rest of your visit.</p>
 </section>
 
-<!-- ============ 7 REQUISITES ============ -->
+
 <section class="sec" id="requisites">
   <h1><span class="num">7</span>Prerequisites and corequisites</h1>
   <div class="gold-rule"></div>
@@ -966,7 +959,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </div>
 </section>
 
-<!-- ============ 8 BLOCKED ============ -->
+
 <section class="sec" id="blocked">
   <h1><span class="num">8</span>When Confirm as written is unavailable</h1>
   <div class="gold-rule"></div>
@@ -988,7 +981,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   <p>A prerequisite, a cross-listing, a term note, or anything else in the description that has its own question takes the same path. The Sweep flags each one, and Confirm as written stays available for those courses with a warning. Section 6 lists where each one goes.</p>
 </section>
 
-<!-- ============ 9 AFTER ============ -->
+
 <section class="sec" id="after">
   <h1><span class="num">9</span>After you submit</h1>
   <div class="gold-rule"></div>
@@ -1023,7 +1016,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </div>
 </section>
 
-<!-- ============ 10 SHAREPOINT LIST ============ -->
+
 <section class="sec" id="list">
   <h1><span class="num">10</span>Your division's list in SharePoint</h1>
   <div class="gold-rule"></div>
@@ -1093,7 +1086,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </div>
 </section>
 
-<!-- ============ 11 RETURNED ============ -->
+
 <section class="sec" id="returned">
   <h1><span class="num">11</span>Fixing a returned course</h1>
   <div class="gold-rule"></div>
@@ -1112,7 +1105,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   <p>The Sweep checks the file as it loads. A choice that is no longer offered comes back blank, and if the course's fees on record have changed since the file was saved, a note asks you to mark them again. A file from another course, or a file that is not a submission file, is refused with a plain message and nothing changes.</p>
 </section>
 
-<!-- ============ 12 FAQ ============ -->
+
 <section class="sec" id="faq">
   <h1><span class="num">12</span>Common questions</h1>
   <div class="gold-rule"></div>
@@ -1167,7 +1160,7 @@ a.list-btn span { margin-top: 2pt; font-size: 7.4pt; line-height: 1.3; color: #F
   </dl>
 </section>
 
-<!-- ============ 13 CONTACT ============ -->
+
 <section class="sec" id="contact">
   <h1><span class="num">13</span>Who to contact</h1>
   <div class="gold-rule"></div>
